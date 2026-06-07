@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import lightLogo from "@/public/icons/modified-logo.png";
 import darkLogo from "@/public/icons/sync-black.svg";
 import Theme from "./theme";
