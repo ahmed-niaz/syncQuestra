@@ -3,6 +3,8 @@ import darkLogo from "@/public/icons/sync-black.svg";
 import whiteLogo from "@/public/icons/sync-white.svg";
 import Image from "next/image";
 import SocialAuthForm from "@/components/forms/socialAuthForm";
+import Link from "next/link";
+import { ROUTES } from "@/constants/routes";
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main
@@ -19,14 +21,24 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             <h1 className="h2-bold text-dark100_light900">join syncQuestra</h1>
             <p className="paragraph-regular text-dark500_light400">To get your questions answer</p>
           </div>
-          <Image src={darkLogo} width={80} height={80} alt="syncQuestra" className="block object-contain dark:hidden" />
-          <Image
-            src={whiteLogo}
-            width={80}
-            height={80}
-            alt="syncQuestra"
-            className="hidden object-contain dark:block"
-          />
+          <Link href={ROUTES.HOME}>
+            <Image
+              src={darkLogo}
+              width={80}
+              height={80}
+              alt="syncQuestra"
+              className="block object-contain dark:hidden"
+            />
+          </Link>
+          <Link href={ROUTES.HOME}>
+            <Image
+              src={whiteLogo}
+              width={80}
+              height={80}
+              alt="syncQuestra"
+              className="hidden object-contain dark:block"
+            />
+          </Link>
         </div>
         {children}
         <SocialAuthForm />
