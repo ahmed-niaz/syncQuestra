@@ -3,6 +3,7 @@ import Link from "next/link";
 import lightLogo from "@/public/icons/modified-logo.png";
 import darkLogo from "@/public/icons/sync-black.svg";
 import Theme from "./theme";
+import MobileNavigation from "./mobileNavigation";
 
 const Navbar = () => {
   return (
@@ -14,6 +15,9 @@ const Navbar = () => {
       <p>Global Search</p>
       <div className="flex-between font-shareTechMono gap-5">
         <Theme />
+        <div className="sm:hidden">
+          <MobileNavigation />
+        </div>
       </div>
     </nav>
   );

@@ -81,7 +81,7 @@
 }
 
 @utility background-light900_dark200 {
-  @apply bg-light-900 dark:bg-dark-200;
+  @apply bg-light-900 dark:bg-dark-100;
 }
 
 @utility background-light900_dark300 {
@@ -276,6 +276,11 @@
   background: linear-gradient(135deg, #f6f4f0 0%, #e2e0d9 100%);
   border-color: #e2e0d9 !important;
 }
+
+/* @utility primary-gradient-reverse {
+  background: linear-gradient(135deg, #e2e0d9 0%, #f6f4f0 100%);
+
+} */
 
 .dark .primary-gradient {
   background: linear-gradient(135deg, #F6F4F0 0%, #0a0908 100%);
