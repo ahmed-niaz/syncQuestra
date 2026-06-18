@@ -10,7 +10,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex">
         <LeftSideNavigation />
         <section className="mx-md:pb-14 flex min-h-screen flex-1 flex-col px-6 pt-36 pb-6 sm:px-14">
-          <div className="mx-auto w-full max-w-6xl border-2 border-amber-50"> {children}</div>
+          <div className="mx-auto w-full max-w-6xl"> {children}</div>
         </section>
         <RightSideNavigation />
       </div>

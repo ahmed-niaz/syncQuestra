@@ -4,4 +4,5 @@ export const ROUTES = {
   REGISTER: "/register",
   PROFILE: (id: string) => `/profile/${id}`,
   TAGS: (id: string) => `/tag/${id}`,
+  ASK_QUESTION: "/ask-question",
 };

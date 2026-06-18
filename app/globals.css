@@ -273,8 +273,8 @@
 }
 
 @utility primary-gradient {
-  background: linear-gradient(135deg, #f6f4f0 0%, #e2e0d9 100%);
-  border-color: #e2e0d9 !important;
+ background: linear-gradient(135deg, #168aad 0%, #0a0908 100%);
+  border-color: #333333 !important;
 }
 
 /* @utility primary-gradient-reverse {
@@ -283,16 +283,12 @@
 } */
 
 .dark .primary-gradient {
-  background: linear-gradient(135deg, #F6F4F0 0%, #0a0908 100%);
+  background: linear-gradient(135deg, #168aad 0%, #0a0908 100%);
   border-color: #333333 !important;
 }
 
 @utility dark-gradient {
-  background: linear-gradient(
-    232deg,
-    rgba(23, 28, 35, 0.41) 0%,
-    rgba(19, 22, 28, 0.7) 100%
-  );
+  background: linear-gradient(90deg,rgba(22, 138, 173, 0.13) 0%, rgba(0, 0, 0, 0.58) 100%);
 }
 
 @utility light-gradient {

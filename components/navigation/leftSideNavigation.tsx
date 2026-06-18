@@ -21,7 +21,7 @@ const LeftSideNavigation = () => {
           </Link>
         </Button>
 
-        <Button className="primary-gradient text-dark-400_light700 rounded-2 base-bold mt-4 h-12 w-full cursor-pointer px-4 py-3">
+        <Button className="primary-gradient paragraph-semibold text-dark-400_light700 rounded-2 mt-4 h-12 w-full cursor-pointer px-4 py-3">
           <Link href={ROUTES.REGISTER}>
             <Image className="invert lg:hidden" src={register} width={20} height={20} alt="register" />
             <span className="max-lg:hidden">Register</span>
