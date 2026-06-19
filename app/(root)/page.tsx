@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/routes";
 import Link from "next/link";
 import search from "@/public/icons/search.svg";
+import HomeFilter from "@/components/filters/homeFiltering";
+import QuestionCard from "@/components/cards/questionCard";
 
 const questions = [
   {
-    id: 1,
+    _id: "1",
     title: "How to learn React?",
     description: "I want to learn React, can anyone help me?",
     tags: [
@@ -19,9 +21,10 @@ const questions = [
         name: "js",
       },
     ],
-    authorId: {
+    author: {
       _id: "1",
       name: "jon doe",
+      image: "https://freevector-images.s3.amazonaws.com/uploads/vector/preview/38484/38484.png",
     },
 
     upvotes: 10,
@@ -30,7 +33,7 @@ const questions = [
     createdAt: new Date(),
   },
   {
-    id: 2,
+    _id: "2",
     title: "Best way to learn Node.js?",
     description: "I know JavaScript basics and want to start backend development with Node.js.",
     tags: [
@@ -43,17 +46,18 @@ const questions = [
         name: "js",
       },
     ],
-    authorId: {
+    author: {
       _id: "2",
       name: "Jane Smith",
+      image: "https://freevector-images.s3.amazonaws.com/uploads/vector/preview/38484/38484.png",
     },
     upvotes: 25,
     answers: 8,
     views: 250,
-    createdAt: "2026-06-18T10:00:00.000Z",
+    createdAt: new Date("2026-06-18T10:00:00.000Z"),
   },
   {
-    id: 3,
+    _id: "3",
     title: "What is the difference between let, const, and var?",
     description: "Can someone explain the differences between let, const, and var in JavaScript with examples?",
     tags: [
@@ -66,14 +70,15 @@ const questions = [
         name: "ES6",
       },
     ],
-    authorId: {
+    author: {
       _id: "3",
       name: "Mike Johnson",
+      image: "https://freevector-images.s3.amazonaws.com/uploads/vector/preview/38484/38484.png",
     },
     upvotes: 42,
     answers: 12,
     views: 520,
-    createdAt: "2026-06-17T15:30:00.000Z",
+    createdAt: new Date("2026-06-17T15:30:00.000Z"),
   },
 ];
 
@@ -82,9 +87,17 @@ interface searchParams {
 }
 
 const Home = async ({ searchParams }: searchParams) => {
-  const { query = "" } = (await searchParams) || {};
+  const { query = "", filter = "" } = (await searchParams) || {};
 
-  const filteredQuestion = questions.filter((question) => question.title.toLowerCase().includes(query.toLowerCase()));
+  // const filteredQuestion = questions.filter((question) => question.title.toLowerCase().includes(query.toLowerCase()));
+
+  const filteredQuestion = questions.filter((question) => {
+    const matchQuery = question.title.toLowerCase().includes(query.toLowerCase());
+
+    const filterQuery = filter ? question.tags[0].name.toLowerCase() === filter.toLowerCase() : true;
+
+    return matchQuery && filterQuery;
+  });
 
   return (
     <>
@@ -102,10 +115,12 @@ const Home = async ({ searchParams }: searchParams) => {
           additionalClassName="flex-1"
         />
       </section>
-      <section>{/* Home filter */}</section>
+      <section>
+        <HomeFilter />
+      </section>
       <div className="mt-10 flex w-full flex-col gap-6">
         {filteredQuestion.map((question) => (
-          <h1 key={question.id}>{question.title}</h1>
+          <QuestionCard key={question._id} question={question} />
         ))}
       </div>
     </>
