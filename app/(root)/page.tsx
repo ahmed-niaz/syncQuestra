@@ -5,6 +5,8 @@ import Link from "next/link";
 import search from "@/public/icons/search.svg";
 import HomeFilter from "@/components/filters/homeFiltering";
 import QuestionCard from "@/components/cards/questionCard";
+import handleError from "@/lib/handlers/error";
+import { NotFoundError, ValidationError } from "@/lib/http-errors";
 
 const questions = [
   {
@@ -82,11 +84,14 @@ const questions = [
   },
 ];
 
+
 interface searchParams {
   searchParams: Promise<{ [key: string]: string | undefined } | null | undefined>;
 }
 
 const Home = async ({ searchParams }: searchParams) => {
+
+
   const { query = "", filter = "" } = (await searchParams) || {};
 
   // const filteredQuestion = questions.filter((question) => question.title.toLowerCase().includes(query.toLowerCase()));
