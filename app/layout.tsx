@@ -18,6 +18,7 @@ const spaceMono = localFont({
   weight: "400 700",
   style: "normal",
   display: "swap",
+  preload: false,
 });
 
 const shareTechMono = localFont({
@@ -26,6 +27,7 @@ const shareTechMono = localFont({
   weight: "400",
   style: "normal",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
