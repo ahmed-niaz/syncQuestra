@@ -6,7 +6,7 @@ import search from "@/public/icons/search.svg";
 import HomeFilter from "@/components/filters/homeFiltering";
 import QuestionCard from "@/components/cards/questionCard";
 import handleError from "@/lib/handlers/error";
-import { NotFoundError, ValidationError } from "@/lib/http-errors";
+import dbConnect from "@/lib/mongoose";
 
 const questions = [
   {
@@ -84,13 +84,20 @@ const questions = [
   },
 ];
 
+const test = async () => {
+  try {
+    await dbConnect();
+  } catch (e) {
+    return handleError(e);
+  }
+};
 
 interface searchParams {
   searchParams: Promise<{ [key: string]: string | undefined } | null | undefined>;
 }
 
 const Home = async ({ searchParams }: searchParams) => {
-
+  await test();
 
   const { query = "", filter = "" } = (await searchParams) || {};
 
