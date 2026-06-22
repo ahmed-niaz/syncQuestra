@@ -26,7 +26,7 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-async function dbConnect(): Promise<Mongoose> {
+async function connectToDatabase(): Promise<Mongoose> {
   // If a connection is already established, return it
   if (cached.conn) {
     logger.info("using existing mongoose connection");
@@ -54,4 +54,4 @@ async function dbConnect(): Promise<Mongoose> {
   return cached.conn;
 }
 
-export default dbConnect;
+export default connectToDatabase;

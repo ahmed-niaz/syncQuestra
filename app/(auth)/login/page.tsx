@@ -1,7 +1,7 @@
 "use client";
 import { AuthForm } from "@/components/forms/authForms";
 
-import { LoginSchema } from "@/lib/validation";
+import { LoginSchema } from "@/lib/zod/validation";
 
 const Login = () => {
   return (

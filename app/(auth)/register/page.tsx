@@ -1,7 +1,7 @@
 "use client";
 
 import { AuthForm } from "@/components/forms/authForms";
-import { RegisterSchema } from "@/lib/validation";
+import { RegisterSchema } from "@/lib/zod/validation";
 import React from "react";
 
 const Register = () => {
