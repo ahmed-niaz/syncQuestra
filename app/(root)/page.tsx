@@ -6,7 +6,8 @@ import search from "@/public/icons/search.svg";
 import HomeFilter from "@/components/filters/homeFiltering";
 import QuestionCard from "@/components/cards/questionCard";
 import handleError from "@/lib/handlers/error";
-import dbConnect from "@/lib/mongoose";
+import { api } from "@/lib/api";
+import logger from "@/lib/logger";
 
 const questions = [
   {
@@ -86,7 +87,7 @@ const questions = [
 
 const test = async () => {
   try {
-    await dbConnect();
+    return await api.users.getAll();
   } catch (e) {
     return handleError(e);
   }
@@ -97,7 +98,8 @@ interface searchParams {
 }
 
 const Home = async ({ searchParams }: searchParams) => {
-  await test();
+  const users = await test();
+  logger.info(JSON.stringify(users, null, 2));
 
   const { query = "", filter = "" } = (await searchParams) || {};
 

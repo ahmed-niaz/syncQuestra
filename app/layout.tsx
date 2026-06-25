@@ -54,7 +54,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         />
       </head>
       <SessionProvider session={session}>
-        <body>
+        <body suppressHydrationWarning>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <main>{children}</main>
           </ThemeProvider>
