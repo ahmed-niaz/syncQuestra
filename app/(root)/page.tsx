@@ -5,9 +5,7 @@ import Link from "next/link";
 import search from "@/public/icons/search.svg";
 import HomeFilter from "@/components/filters/homeFiltering";
 import QuestionCard from "@/components/cards/questionCard";
-import handleError from "@/lib/handlers/error";
-import { api } from "@/lib/api";
-import logger from "@/lib/logger";
+import { auth } from "@/auth";
 
 const questions = [
   {
@@ -85,22 +83,14 @@ const questions = [
   },
 ];
 
-const test = async () => {
-  try {
-    return await api.users.getAll();
-  } catch (e) {
-    return handleError(e);
-  }
-};
-
 interface searchParams {
   searchParams: Promise<{ [key: string]: string | undefined } | null | undefined>;
 }
 
 const Home = async ({ searchParams }: searchParams) => {
-  const users = await test();
-  logger.info(JSON.stringify(users, null, 2));
+  const session = await auth();
 
+  console.log("session", session);
   const { query = "", filter = "" } = (await searchParams) || {};
 
   // const filteredQuestion = questions.filter((question) => question.title.toLowerCase().includes(query.toLowerCase()));

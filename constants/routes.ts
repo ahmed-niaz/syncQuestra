@@ -6,4 +6,5 @@ export const ROUTES = {
   TAGS: (id: string) => `/tag/${id}`,
   ASK_QUESTION: "/ask-question",
   QUESTION: (id: string) => `/question/${id}`,
+  OAUTH_LOG_IN: `oauth-login`,
 };
