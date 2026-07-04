@@ -17,16 +17,17 @@ import { NextResponse } from "next/server";
 
 // todo: create an account using oAuth provider.
 export async function POST(request: Request) {
-  const { provider, providerAccountId, user } = await request.json();
-
-  await connectToDatabase();
-
-  // implemented transaction (or we can call it atomic fn)
-  const session = await mongoose.startSession();
-
-  session.startTransaction();
-
+  let session;
   try {
+    const { provider, providerAccountId, user } = await request.json();
+
+    await connectToDatabase();
+
+    // implemented transaction (or we can call it atomic fn)
+    session = await mongoose.startSession();
+
+    session.startTransaction();
+
     const validatedData = LoginOAuthSchema.safeParse({ provider, providerAccountId, user });
 
     if (!validatedData.success) {
@@ -92,10 +93,14 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (e: unknown) {
-    await session.abortTransaction();
+    if (session) {
+      await session.abortTransaction();
+    }
     return handleError(e, "api") as APIErrorResponse;
   } finally {
-    session.endSession();
+    if (session) {
+      session.endSession();
+    }
   }
 }
 

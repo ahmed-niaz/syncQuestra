@@ -50,3 +50,10 @@ export class ForbiddenError extends RequestError {
     this.name = "ForbiddenError";
   }
 }
+
+export class InternalServerError extends RequestError {
+  constructor(message: string = "Internal Server Error") {
+    super(500, message);
+    this.name = "InternalServerError";
+  }
+}

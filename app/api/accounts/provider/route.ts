@@ -8,9 +8,9 @@ import { NextResponse } from "next/server";
 import * as z from "zod";
 
 export async function POST(request: Request) {
-  const { providerAccountId } = await request.json();
-
   try {
+    const { providerAccountId } = await request.json();
+
     const accountValidation = AccountSchema.partial().safeParse({ providerAccountId });
     if (!accountValidation.success) {
       throw new ValidationError(z.flattenError(accountValidation.error).fieldErrors);
@@ -28,3 +28,5 @@ export async function POST(request: Request) {
     return handleError(e, "api") as APIErrorResponse;
   }
 }
+
+// fetch the account by it's provider account id

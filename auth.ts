@@ -5,7 +5,7 @@ import { ActionResponse } from "./types/global";
 import { api } from "./lib/routes/api";
 import { IAccount } from "./database/account.model";
 
-// TODO: we'll check if the login account type is credentials : if yes [we skip]
+// TODO: we'll check if the login account type is credentials (password based) : if yes [we skip]
 // TODO: acccount type is not credentials, then call it 'oauth-login' app and create oauth accounts.
 
 export const { handlers, signIn, signOut, auth } = NextAuth({

@@ -20,49 +20,49 @@ export const api = {
       }),
   },
   users: {
-    getAll: () => handleFetch(`${base_url} / users`),
-    getById: (id: string) => handleFetch(`${base_url} / users / ${id}`),
+    getAll: () => handleFetch(`${base_url}/users`),
+    getById: (id: string) => handleFetch(`${base_url}/users/${id}`),
     getByEmail: (email: string) =>
-      handleFetch(`${base_url} / users / email`, {
+      handleFetch(`${base_url}/users/lookup-email`, {
         method: "POST",
         body: JSON.stringify({ email }),
       }),
     create: (userData: Partial<IUser>) =>
-      handleFetch(`${base_url} / users`, {
+      handleFetch(`${base_url}/users`, {
         method: "POST",
         body: JSON.stringify(userData),
       }),
     update: (id: string, updateData: Partial<IUser>) =>
-      handleFetch(`${base_url} / users / ${id}`, {
+      handleFetch(`${base_url}/users/${id}`, {
         method: "PUT",
         body: JSON.stringify(updateData),
       }),
     delete: (id: string) =>
-      handleFetch(`${base_url} / users / ${id}`, {
+      handleFetch(`${base_url}/users/${id}`, {
         method: "DELETE",
       }),
   },
 
   accounts: {
-    getAll: () => handleFetch(`${base_url} / accounts`),
-    getById: (id: string) => handleFetch(`${base_url} / accounts / ${id}`),
+    getAll: () => handleFetch(`${base_url}/accounts`),
+    getById: (id: string) => handleFetch(`${base_url}/accounts/${id}`),
     getByProvider: (providerAccountId: string) =>
-      handleFetch(`${base_url} / accounts / provider`, {
+      handleFetch(`${base_url}/accounts/provider`, {
         method: "POST",
         body: JSON.stringify({ providerAccountId }),
       }),
     create: (accountData: Partial<IAccount>) =>
-      handleFetch(`${base_url} / accounts`, {
+      handleFetch(`${base_url}/accounts`, {
         method: "POST",
         body: JSON.stringify(accountData),
       }),
     update: (id: string, updateData: Partial<IAccount>) =>
-      handleFetch(`${base_url} / accounts / ${id}`, {
+      handleFetch(`${base_url}/accounts/${id}`, {
         method: "PUT",
         body: JSON.stringify(updateData),
       }),
     delete: (id: string) =>
-      handleFetch(`${base_url} / accounts / ${id}`, {
+      handleFetch(`${base_url}/accounts/${id}`, {
         method: "DELETE",
       }),
   },

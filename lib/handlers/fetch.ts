@@ -7,9 +7,13 @@ interface FetchOptions extends RequestInit {
   timeout?: number;
 }
 
+// type guard fn
 function isError(error: unknown): error is Error {
   return error instanceof Error;
 }
+
+//  a fn that wraps native fetch api with request timeout and proper custom error handling and error logging.
+// and finally return the response in ActionResponse<T> format
 
 export async function handleFetch<T>(url: string, options: FetchOptions = {}): Promise<ActionResponse<T>> {
   const { timeout = 5000, headers: customHeaders = {}, ...restOptions } = options;
@@ -44,6 +48,7 @@ export async function handleFetch<T>(url: string, options: FetchOptions = {}): P
   } catch (e) {
     const err = isError(e) ? e : new Error("An unknown error occurred");
 
+    // request timeout
     if (err.name === "AbortError") {
       logger.warn(`Fetch request to ${url} timed out`);
     } else {

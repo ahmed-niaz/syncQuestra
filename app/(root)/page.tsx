@@ -88,9 +88,9 @@ interface searchParams {
 }
 
 const Home = async ({ searchParams }: searchParams) => {
-  const session = await auth();
+  await auth();
 
-  console.log("session", session);
+  // console.log("session", session);
   const { query = "", filter = "" } = (await searchParams) || {};
 
   // const filteredQuestion = questions.filter((question) => question.title.toLowerCase().includes(query.toLowerCase()));

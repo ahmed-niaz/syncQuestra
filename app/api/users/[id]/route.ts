@@ -44,7 +44,7 @@ export async function DELETE(_: Request, { params }: { params: Promise<{ id: str
       throw new NotFoundError("User");
     }
 
-    return NextResponse.json({ success: true, data: user }, { status: 200 });
+    return NextResponse.json({ success: true, data: user }, { status: 204 });
   } catch (e) {
     return handleError(e, "api") as APIErrorResponse;
   }
