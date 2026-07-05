@@ -7,9 +7,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const NavigationLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
+const NavigationLinks = ({ isMobileNav = false, userId }: { isMobileNav?: boolean; userId?: string }) => {
   const pathname = usePathname();
-  const userId = 1;
   return (
     <>
       {SideBarLink.map((item) => {
