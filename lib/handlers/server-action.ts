@@ -1,6 +1,6 @@
-import { ZodSchema } from "zod/v3";
-import logger from "../logger";
 import * as z from "zod";
+import { ZodSchema } from "zod";
+import logger from "../logger";
 import { UnauthorizedError, ValidationError } from "../http-errors";
 import { Session } from "next-auth";
 import { auth } from "@/auth";
@@ -12,12 +12,21 @@ type ServerActionOptions<T> = {
   authorize?: boolean;
 };
 
+type ServerActionResult<T> = {
+  params: T;
+  session: Session | null;
+};
+
 // create the safe handler for the server action
-async function serverAction<T>({ params, schema, authorize }: ServerActionOptions<T>) {
-  // checking  the schema & params are porvided and  doing validation
+async function serverAction<T>({
+  params,
+  schema,
+  authorize,
+}: ServerActionOptions<T>): Promise<ServerActionResult<T> | Error> {
+  // checking  the schema & params are provided and  doing validation
   if (schema && params) {
     try {
-      schema.safeParse(params);
+      params = schema.parse(params) as T;
     } catch (e) {
       logger.error("Server action failed");
       if (e instanceof z.ZodError) {
@@ -40,7 +49,7 @@ async function serverAction<T>({ params, schema, authorize }: ServerActionOption
 
   // connecting to database
   await connectToDatabase();
-  return { params, schema };
+  return { params: params as T, session };
 }
 
 export default serverAction;

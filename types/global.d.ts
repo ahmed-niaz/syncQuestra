@@ -23,7 +23,7 @@ export interface Question {
   createdAt: Date;
 }
 
-type ActionResponse<T = null> = {
+export type ActionResponse<T = null> = {
   success: boolean;
   data?: T;
   error?: {

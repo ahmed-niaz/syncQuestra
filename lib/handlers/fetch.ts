@@ -41,10 +41,10 @@ export async function handleFetch<T>(url: string, options: FetchOptions = {}): P
       throw new RequestError(res.status, `Http error: ${res.status}`);
     }
 
-    const data = await res.json();
+    const responseData = await res.json();
     logger.info(`Fetch request to ${url} successful`);
 
-    return { success: true, data };
+    return responseData as ActionResponse<T>;
   } catch (e) {
     const err = isError(e) ? e : new Error("An unknown error occurred");
 

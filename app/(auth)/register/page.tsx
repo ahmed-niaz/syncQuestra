@@ -1,6 +1,7 @@
 "use client";
 
 import { AuthForm } from "@/components/forms/authForms";
+import { registerWithCredintials } from "@/lib/actions/auth.action";
 import { RegisterSchema } from "@/lib/zod/validation";
 import React from "react";
 
@@ -10,7 +11,7 @@ const Register = () => {
       formType="REGISTER"
       schema={RegisterSchema}
       defaultValues={{ username: "", email: "", password: "", name: "" }}
-      onSubmit={(data) => Promise.resolve({ success: true, data })}
+      onSubmit={registerWithCredintials}
     />
   );
 };

@@ -8,3 +8,10 @@ export interface LoginOAuthParams {
     image: string;
   };
 }
+
+export interface AuthCredintials {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+}

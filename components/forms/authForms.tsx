@@ -12,15 +12,18 @@ import { Input } from "@/components/ui/input";
 import { FieldValues } from "react-hook-form";
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
+import { ActionResponse } from "@/types/global";
+import { useRouter } from "next/navigation";
 
 export interface AuthFormProps<T extends FieldValues> {
   schema: z.ZodType<T>;
   defaultValues: T;
   formType: "LOG_IN" | "REGISTER";
-  onSubmit: (data: T) => Promise<{ success: boolean; data: T } | { success: boolean; error: string }>;
+  onSubmit: (data: T) => Promise<ActionResponse>;
 }
 
 export const AuthForm = <T extends FieldValues>({ schema, defaultValues, onSubmit, formType }: AuthFormProps<T>) => {
+  const router = useRouter();
   const form = useForm<T>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(schema as any),
@@ -30,12 +33,13 @@ export const AuthForm = <T extends FieldValues>({ schema, defaultValues, onSubmi
   const buttonText = formType === "REGISTER" ? "Register" : "Login";
 
   const handleSubmitBtn = async (data: T) => {
-    const result = await onSubmit(data);
+    const result = (await onSubmit(data)) as ActionResponse;
     console.log("result", result);
     if (result.success) {
       toast.success(formType === "REGISTER" ? "Registration successful" : "Login successful");
+      router.push(ROUTES.HOME);
     } else {
-      toast.error("error" in result ? result.error : "An error occurred");
+      toast.error(result.error?.message || "An error occurred");
     }
 
     // todo: authenticate the user.
@@ -61,7 +65,6 @@ export const AuthForm = <T extends FieldValues>({ schema, defaultValues, onSubmi
                   <Input
                     {...field}
                     id={`auth-field-${field.name}`}
-                    required
                     type={field.name === "password" ? "password" : "text"}
                     className="paragraph-regular background-light-900 no-focus rounded-1.5 min-h-12"
                   />
@@ -72,6 +75,7 @@ export const AuthForm = <T extends FieldValues>({ schema, defaultValues, onSubmi
           ))}
         </FieldGroup>
         <Button
+          type="submit"
           disabled={form.formState.isSubmitting}
           className="primary-gradient paragraph-semibold text-dark-400_light700 rounded-2 mt-4 h-12 w-full cursor-pointer px-4 py-3 font-bold"
         >
