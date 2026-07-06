@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 export interface Tags {
   _id: string;
   name: string;
@@ -23,7 +21,7 @@ export interface Question {
   createdAt: Date;
 }
 
-export type ActionResponse<T = null> = {
+type ActionResponse<T = null> = {
   success: boolean;
   data?: T;
   error?: {
@@ -38,3 +36,8 @@ type ErrorResponse = ActionResponse<undefined> & { success: false };
 
 type APIErrorResponse = NextResponse<ErrorResponse>;
 type APISuccessResponse<T = null> = NextResponse<SuccessResponse<T> | ErrorResponse>;
+
+interface RouteParams {
+  params: Promise<Record<string, string[]>>;
+  searchParams: Promise<Record<string, string[]>>;
+}

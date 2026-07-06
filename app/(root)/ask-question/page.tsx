@@ -1,6 +1,13 @@
+import { auth } from "@/auth";
 import QuestionForm from "@/components/forms/questionForm";
+import { ROUTES } from "@/constants/routes";
+import { redirect } from "next/navigation";
 
-const AskQuestion = () => {
+const AskQuestion = async () => {
+  const session = await auth();
+  if (!session) {
+    return redirect(ROUTES.LOGIN);
+  }
   return (
     <>
       <div>
