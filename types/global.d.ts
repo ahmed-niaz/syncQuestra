@@ -12,7 +12,7 @@ export interface Author {
 export interface Question {
   _id: string;
   title: string;
-  description: string;
+  content: string;
   tags: Tags[];
   author: Author;
   upvotes: number;
@@ -38,6 +38,6 @@ type APIErrorResponse = NextResponse<ErrorResponse>;
 type APISuccessResponse<T = null> = NextResponse<SuccessResponse<T> | ErrorResponse>;
 
 interface RouteParams {
-  params: Promise<Record<string, string[]>>;
-  searchParams: Promise<Record<string, string[]>>;
+  params: Promise<Record<string, string>>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
