@@ -110,7 +110,7 @@ export const AskQuestionSchema = z.object({
         .max(15, { message: "Tag must not exceed 15 characters." })
     )
     .min(1, { message: "Add at least one tag." })
-    .max(3, { message: "Maximum of 3 tags." }),
+    .max(4, { message: "Maximum of 4 tags." }),
 });
 
 export const EditQuestionSchema = AskQuestionSchema.extend({
@@ -119,4 +119,12 @@ export const EditQuestionSchema = AskQuestionSchema.extend({
 
 export const GetQuestionSchema = z.object({
   questionId: z.string().min(1, "Question ID is required"),
+});
+
+export const PaginationSchema = z.object({
+  page: z.number().min(1, "page must be one or more").default(1),
+  pageSize: z.number().min(1, "page size must be one or more").default(10),
+  sort: z.string().optional(),
+  filter: z.string().optional(),
+  query: z.string().optional(),
 });

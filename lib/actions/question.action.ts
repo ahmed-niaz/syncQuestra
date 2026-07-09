@@ -2,12 +2,13 @@
 
 import { CreateQuestionParams, EditQuestionParams, GetQuestionParams } from "@/types/action";
 import serverAction from "../handlers/server-action";
-import { AskQuestionSchema, EditQuestionSchema, GetQuestionSchema } from "../zod/validation";
+import { AskQuestionSchema, EditQuestionSchema, GetQuestionSchema, PaginationSchema } from "../zod/validation";
 import handleError from "../handlers/error";
-import mongoose from "mongoose";
+import mongoose, { QueryFilter } from "mongoose";
 import { Question, Question as QuestionModel, Tag, TagQuestion } from "@/database";
-import { ActionResponse, ErrorResponse, Question as QuestionType } from "@/types/global";
+import { ActionResponse, ErrorResponse, PaginationParams, Question as QuestionType } from "@/types/global";
 import { ITagDoc } from "@/database/tag.model";
+import { IQuestionDoc } from "@/database/question.model";
 
 export async function createQuestion(params: CreateQuestionParams): Promise<ActionResponse<QuestionType>> {
   const validateResult = await serverAction({
@@ -71,7 +72,7 @@ export async function createQuestion(params: CreateQuestionParams): Promise<Acti
   }
 }
 
-export async function editQuestion(params: EditQuestionParams): Promise<ActionResponse<QuestionType>> {
+export async function editQuestion(params: EditQuestionParams): Promise<ActionResponse<IQuestionDoc>> {
   const validateResult = await serverAction({
     params,
     schema: EditQuestionSchema,
@@ -93,6 +94,10 @@ export async function editQuestion(params: EditQuestionParams): Promise<ActionRe
     // access to the question
     const question = await QuestionModel.findById(questionId).populate("tags");
 
+    if (!question) {
+      throw new Error("Question not found");
+    }
+
     if (question.author.toString() !== userId) {
       throw new Error("Unauthorized");
     }
@@ -104,16 +109,24 @@ export async function editQuestion(params: EditQuestionParams): Promise<ActionRe
       await question.save({ session });
     }
 
-    const addTags = tags.filter((tg) => !question.tags.includes(tg.toLowerCase()));
+    // Determine which tags to add/remove using the populated tag documents
+    const addTags = tags.filter(
+      (tag) => !question.tags.some((tg: ITagDoc) => tg.name.toLowerCase() === tag.toLowerCase())
+    );
 
-    const removeTags = question.tags.filter((tg: ITagDoc) => !tags.includes(tg.name.toLowerCase()));
+    const removeTags = question.tags.filter(
+      (tag: ITagDoc) => !tags.some((tg) => tg.toLowerCase() === tag.name.toLowerCase())
+    );
 
     const newTagDocuments = [];
+
+    // Depopulate tags to get a clean ObjectId array before mutating
+    question.depopulate("tags");
 
     if (addTags.length > 0) {
       for (const tg of addTags) {
         const existingTag = await Tag.findOneAndUpdate(
-          { name: { $regex: new RegExp(`^${tg}$`, "i") } },
+          { name: { $regex: `^${tg}$`, $options: "i" } },
           { $setOnInsert: { name: tg }, $inc: { questions: 1 } },
           { upsert: true, new: true, session }
         );
@@ -122,12 +135,10 @@ export async function editQuestion(params: EditQuestionParams): Promise<ActionRe
           throw new Error(`failed to create tag ${tg}`);
         }
 
-        if (existingTag) {
-          newTagDocuments.push({
-            tag: existingTag._id,
-            question: questionId,
-          });
-        }
+        newTagDocuments.push({
+          tag: existingTag._id,
+          question: questionId,
+        });
 
         question.tags.push(existingTag._id);
       }
@@ -146,7 +157,9 @@ export async function editQuestion(params: EditQuestionParams): Promise<ActionRe
         { session }
       );
 
-      question.tags = question.tags.filter((tgId: mongoose.Types.ObjectId) => !removeTagIds.includes(tgId));
+      question.tags = question.tags.filter(
+        (tag: mongoose.Types.ObjectId) => !removeTagIds.some((id: mongoose.Types.ObjectId) => id.equals(tag))
+      );
     }
 
     if (newTagDocuments.length > 0) {
@@ -194,3 +207,67 @@ export async function getQuestion(params: GetQuestionParams) {
 
 // in server components they act like regualr async funciton
 // in client components : when used in form actions or event handlers they are invoked via POST request.
+
+export async function getQuestions(
+  params: PaginationParams
+): Promise<ActionResponse<{ questions: QuestionType[]; isNext: boolean }>> {
+  const validateResult = await serverAction({
+    params,
+    schema: PaginationSchema,
+  });
+
+  if (validateResult instanceof Error) {
+    return handleError(validateResult) as ErrorResponse;
+  }
+
+  const { page = 1, pageSize = 1, query, filter } = params;
+  const skip = Number(page - 1) * pageSize;
+  const limit = Number(pageSize);
+
+  const queryFilter: QueryFilter<typeof Question> = {};
+
+  if (filter === "recommended") return { success: true, data: { questions: [], isNext: false } };
+
+  if (query) {
+    queryFilter.$or = [{ title: { $regex: query, $options: "i" } }, { content: { $regex: query, $options: "i" } }];
+  }
+
+  let sortCriteria = {};
+
+  switch (filter) {
+    case "newest":
+      sortCriteria = { createdAt: -1 };
+      break;
+    case "unanswered":
+      queryFilter.answers = 0;
+      break;
+    case "popular":
+      sortCriteria = { upvotes: -1 };
+      break;
+    default:
+      sortCriteria = { createdAt: -1 };
+      break;
+  }
+
+  try {
+    const totalQuestions = await Question.countDocuments(queryFilter);
+
+    const questions = await Question.find(queryFilter)
+      .populate("tags", "name")
+      .populate("author", "name image")
+      .lean()
+      .sort(sortCriteria)
+      .skip(skip)
+      .limit(limit);
+
+    // next Page
+    const isNext = totalQuestions > skip + questions.length;
+
+    return {
+      success: true,
+      data: { questions: JSON.parse(JSON.stringify(questions)), isNext },
+    };
+  } catch (e) {
+    return handleError(e) as ErrorResponse;
+  }
+}
