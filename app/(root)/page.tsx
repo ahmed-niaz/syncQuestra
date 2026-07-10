@@ -6,6 +6,8 @@ import search from "@/public/icons/search.svg";
 import HomeFilter from "@/components/filters/homeFiltering";
 import QuestionCard from "@/components/cards/questionCard";
 import { getQuestions } from "@/lib/actions/question.action";
+import DataRenderer from "@/components/data-renderer";
+import { EMPTY_QUESTION } from "@/constants/states";
 
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string | undefined }>;
@@ -50,7 +52,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <section>
         <HomeFilter />
       </section>
-      {success ? (
+      {/* {success ? (
         <div className="mt-10 flex w-full flex-col gap-6">
           {questions && questions.length > 0 ? (
             questions.map((question) => <QuestionCard key={question._id} question={question} />)
@@ -64,7 +66,21 @@ const Home = async ({ searchParams }: SearchParams) => {
         <div className="mt-10 flex w-full items-center justify-center">
           <p className="text-dark400_light700">{error?.message || "Failed to fetch quesitons"}</p>
         </div>
-      )}
+      )} */}
+
+      <DataRenderer
+        success={success}
+        error={error}
+        data={questions}
+        empty={EMPTY_QUESTION}
+        render={(questions) => (
+          <div className="mt-10 flex w-full flex-col gap-6">
+            {questions.map((question) => (
+              <QuestionCard key={question._id} question={question} />
+            ))}
+          </div>
+        )}
+      />
     </>
   );
 };
