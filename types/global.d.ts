@@ -1,6 +1,7 @@
 export interface Tags {
   _id: string;
   name: string;
+  questions?: number;
 }
 
 export interface Author {

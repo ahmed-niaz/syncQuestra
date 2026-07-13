@@ -37,7 +37,7 @@ export const EMPTY_TAGS = {
   message: "No tags have been created yet. Add a tag to help organize and categorize content.",
   button: {
     text: "Create Tag",
-    href: ROUTES.TAGS,
+    href: ROUTES.ASK_QUESTION,
   },
 };
 

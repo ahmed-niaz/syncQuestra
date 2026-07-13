@@ -1,7 +1,7 @@
 import { ROUTES } from "@/constants/routes";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
-import { devIconClassName } from "@/lib/utils";
+import { cn, devIconClassName, getTechDescription } from "@/lib/utils";
 import close from "@/public/icons/x.svg";
 import Image from "next/image";
 
@@ -18,6 +18,7 @@ interface Props {
 
 const CardTags = ({ _id, name, questions, showCount, compact, remove, isButton, handleTagRemoveBtn }: Props) => {
   const iconsClass = devIconClassName(name);
+  const iconDescription = getTechDescription(name);
 
   const content = (
     <>
@@ -48,11 +49,29 @@ const CardTags = ({ _id, name, questions, showCount, compact, remove, isButton, 
     return isButton ? (
       <button className="flex justify-between gap-2">{content}</button>
     ) : (
-      <Link href={ROUTES.TAGS(_id)} className="flex justify-between gap-2 rounded-md">
+      <Link href={ROUTES.TAG(_id)} className="flex justify-between gap-2 rounded-md">
         {content}
       </Link>
     );
   }
+
+  return (
+    <Link href={ROUTES.TAG(_id)} className="shadow-light100_darknone">
+      <article className="background-light900_dark200 light-border flex w-full flex-col rounded-2xl border px-8 py-10 sm:w-[260px]">
+        <div className="flex items-center justify-between gap-3">
+          <div className="background-light800_dark400 w-fit px-5 py-1.5">
+            <p className="paragraph-semibold text-dark400_light900">{name}</p>
+          </div>
+          <i className={cn(iconsClass, "text-2xl")} aria-hidden="true" />
+        </div>
+        <p className="small-regular text-dark500_light700 mt-5 line-clamp-3 w-full">{iconDescription}</p>
+        <p className="small-medium text-dark400_light500 mt-3.5">
+          <span className="body-semibold primary-text-gradient">{questions}+ </span>
+          Questions
+        </p>
+      </article>
+    </Link>
+  );
 };
 
 export default CardTags;

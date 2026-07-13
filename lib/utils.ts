@@ -1,14 +1,23 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { techMap } from "@/constants/techMap";
+import { techDescriptionMap } from "@/constants/techDescription";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const devIconClassName = (teachName: string) => {
-  const normalizeTechName = teachName.replace(/[ .]/g, "").toLocaleLowerCase();
+export const devIconClassName = (techName: string) => {
+  const normalizeTechName = techName.replace(/[ .]/g, "").toLocaleLowerCase();
   return techMap[normalizeTechName] ? `${techMap[normalizeTechName]} colored` : "devicon-devicon-plain";
+};
+
+export const getTechDescription = (techName: string) => {
+  const normalizeTechName = techName.replace(/[ .]/g, "").toLocaleLowerCase();
+  return (
+    techDescriptionMap[normalizeTechName] ||
+    `${techName} is a technology or tool widely used in software development, providing valuable features and capabilities.`
+  );
 };
 
 export const getTimeStamp = (createdAt: Date): string => {
