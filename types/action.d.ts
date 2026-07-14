@@ -1,3 +1,5 @@
+import { PaginationParams } from "./global";
+
 export interface LoginOAuthParams {
   provider: "github" | "google";
   providerAccountId: string;
@@ -28,4 +30,8 @@ export interface EditQuestionParams extends CreateQuestionParams {
 
 export interface GetQuestionParams {
   questionId: string;
+}
+
+export interface GetTagQuestionParams extends Omit<PaginationParams, "filter"> {
+  tagId: string;
 }

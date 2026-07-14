@@ -40,6 +40,7 @@ const QuestionCard = ({ question }: Props) => {
           title={`| asked ${getTimeStamp(createdAt)}`}
           href={ROUTES.PROFILE(author._id as string)}
           textStyles="small-medium text-dark400_light700"
+          titlestyle="max-sm:hidden"
         />
         <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
           <Metric

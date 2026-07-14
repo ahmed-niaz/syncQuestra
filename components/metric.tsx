@@ -6,14 +6,15 @@ interface Props {
   imgUrl?: string;
   alt: string;
   value: string | number;
-  title: string;
+  title?: string;
   href?: string;
   textStyles?: string;
   imgStyles?: string;
   author?: boolean;
+  titlestyle?: string;
 }
 
-const Metric = ({ imgUrl, alt, value, title, href, textStyles, imgStyles, author }: Props) => {
+const Metric = ({ imgUrl, alt, value, title, href, textStyles, imgStyles, author, titlestyle }: Props) => {
   const renderMetricContent = (
     <>
       {imgUrl && (
@@ -21,7 +22,9 @@ const Metric = ({ imgUrl, alt, value, title, href, textStyles, imgStyles, author
       )}
       <p className={cn("flex items-center gap-1", textStyles)}>
         {value}
-        <span className={cn("small-regular line-clamp-1", author ? "max-sm:hidden" : "")}>{title}</span>
+        {title ? (
+          <span className={cn("small-regular line-clamp-1", titlestyle, author ? "max-sm:hidden" : "")}>{title}</span>
+        ) : null}
       </p>
     </>
   );

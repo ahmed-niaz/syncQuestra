@@ -1,11 +1,18 @@
 "use server";
 
-import { ActionResponse, ErrorResponse, PaginationParams, Tags as TagType } from "@/types/global";
+import {
+  ActionResponse,
+  ErrorResponse,
+  PaginationParams,
+  Question as QuestionType,
+  Tags as TagType,
+} from "@/types/global";
 import serverAction from "../handlers/server-action";
 import { QueryFilter } from "mongoose";
-import { PaginationSchema } from "../zod/validation";
+import { GetTagQuestionsSchema, PaginationSchema } from "../zod/validation";
 import handleError from "../handlers/error";
-import { Tag } from "@/database";
+import { Question, Tag } from "@/database";
+import { GetTagQuestionParams } from "@/types/action";
 
 export const getTags = async (
   params: PaginationParams
@@ -62,6 +69,62 @@ export const getTags = async (
     return {
       success: true,
       data: { tags: JSON.parse(JSON.stringify(tags)), isNext },
+    };
+  } catch (e) {
+    return handleError(e) as ErrorResponse;
+  }
+};
+
+export const getTagQuestions = async (
+  params: GetTagQuestionParams
+): Promise<ActionResponse<{ tag: TagType; questions: QuestionType[]; isNext: boolean }>> => {
+  const validateResult = await serverAction({
+    params,
+    schema: GetTagQuestionsSchema,
+  });
+
+  if (validateResult instanceof Error) {
+    return handleError(validateResult) as ErrorResponse;
+  }
+
+  const { page = 1, pageSize = 10, query, tagId } = params;
+
+  const skip = (Number(page) - 1) * Number(pageSize);
+  const limit = Number(pageSize);
+
+  try {
+    const tag = await Tag.findById(tagId);
+    if (!tag) throw new Error("tag not found");
+
+    const queryFilter: QueryFilter<typeof Question> = {
+      tags: { $in: [tagId] },
+    };
+
+    if (query) {
+      queryFilter.title = { regex: query, $options: "i" };
+    }
+
+    const totalQuestions = await Question.countDocuments(queryFilter);
+
+    const quesitons = await Question.find(queryFilter)
+      .select("_id title views answers upvotes downvotes author createdAt")
+      .populate([
+        { path: "author", select: "name image" },
+        { path: "tags", select: "name" },
+      ])
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const isNext = totalQuestions > skip + quesitons.length;
+
+    return {
+      success: true,
+      data: {
+        tag: JSON.parse(JSON.stringify(tag)),
+        questions: JSON.parse(JSON.stringify(quesitons)),
+        isNext,
+      },
     };
   } catch (e) {
     return handleError(e) as ErrorResponse;
