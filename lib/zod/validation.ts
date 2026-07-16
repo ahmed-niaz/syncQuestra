@@ -132,3 +132,11 @@ export const PaginationSchema = z.object({
 export const GetTagQuestionsSchema = PaginationSchema.extend({
   tagId: z.string().min(1, "tag id is required"),
 });
+
+export const IncreaseViewCountSchema = z.object({
+  questionId: z.string().min(1, { message: "Question ID is required" }),
+});
+
+export const AnswerSchema = z.object({
+  content: z.string().min(100, "Answer must be at least 100 characters."),
+});

@@ -1,8 +1,14 @@
 "use server";
 
-import { CreateQuestionParams, EditQuestionParams, GetQuestionParams } from "@/types/action";
+import { CreateQuestionParams, EditQuestionParams, GetQuestionParams, IncreaseViewCountParams } from "@/types/action";
 import serverAction from "../handlers/server-action";
-import { AskQuestionSchema, EditQuestionSchema, GetQuestionSchema, PaginationSchema } from "../zod/validation";
+import {
+  AskQuestionSchema,
+  EditQuestionSchema,
+  GetQuestionSchema,
+  IncreaseViewCountSchema,
+  PaginationSchema,
+} from "../zod/validation";
 import handleError from "../handlers/error";
 import mongoose, { QueryFilter } from "mongoose";
 import { Question, Question as QuestionModel, Tag, TagQuestion } from "@/database";
@@ -267,6 +273,35 @@ export async function getQuestions(
       success: true,
       data: { questions: JSON.parse(JSON.stringify(questions)), isNext },
     };
+  } catch (e) {
+    return handleError(e) as ErrorResponse;
+  }
+}
+
+export async function increaseViewCount(params: IncreaseViewCountParams): Promise<ActionResponse<{ views: number }>> {
+  const validateResult = await serverAction({
+    params,
+    schema: IncreaseViewCountSchema,
+  });
+
+  if (validateResult instanceof Error) {
+    return handleError(validateResult) as ErrorResponse;
+  }
+
+  const { questionId } = validateResult.params;
+
+  try {
+    const question = await Question.findById(questionId);
+
+    if (!question) {
+      throw new Error("Question not found");
+    }
+
+    question.views += 1;
+
+    await question.save();
+
+    return { success: true, data: { views: question.views } };
   } catch (e) {
     return handleError(e) as ErrorResponse;
   }

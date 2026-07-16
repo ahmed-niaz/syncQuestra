@@ -10,12 +10,18 @@ import comments from "@/public/icons/comments.svg";
 import view from "@/public/icons/view.svg";
 import CardTags from "@/components/cards/cardTags";
 import Preview from "@/components/editor/preview";
-import { getQuestion } from "@/lib/actions/question.action";
+import { getQuestion, increaseViewCount } from "@/lib/actions/question.action";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
+import AnswerForm from "@/components/forms/answerForm";
 
 const QuestionDetails = async ({ params }: RouteParams) => {
   const { id } = await params;
+
   const { success, data: quesitonData } = await getQuestion({ questionId: id });
+  after(async () => {
+    await increaseViewCount({ questionId: id });
+  });
 
   if (!success || !quesitonData) return redirect("/404");
 
@@ -72,6 +78,9 @@ const QuestionDetails = async ({ params }: RouteParams) => {
           <CardTags key={tag._id} _id={tag._id} name={tag.name} compact />
         ))}
       </div>
+      <section className="my-5">
+        <AnswerForm questionId={id} />
+      </section>
     </>
   );
 };

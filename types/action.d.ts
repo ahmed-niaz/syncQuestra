@@ -35,3 +35,7 @@ export interface GetQuestionParams {
 export interface GetTagQuestionParams extends Omit<PaginationParams, "filter"> {
   tagId: string;
 }
+
+export interface IncreaseViewCountParams {
+  questionId: string;
+}
