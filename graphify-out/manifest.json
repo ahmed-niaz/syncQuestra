@@ -70,13 +70,8 @@
     "semantic_hash": "0b0a35c4b7ed595c609b977dbd3d8842"
   },
   "app/(root)/questions/[id]/page.tsx": {
-    "mtime": 1784134224.7733417,
-    "ast_hash": "bdc0dc389f7e83e3945e57b7e631dc47",
-    "semantic_hash": ""
-  },
-  "app/(root)/questions/view.tsx": {
-    "mtime": 1784134891.5672078,
-    "ast_hash": "dd673a6b1bcf9142843155c9ed8d0eb4",
+    "mtime": 1784480458.0564296,
+    "ast_hash": "ffd798e7187085df9cfd1f8a78edefee",
     "semantic_hash": ""
   },
   "app/(root)/tags/page.tsx": {
@@ -130,9 +125,9 @@
     "semantic_hash": "a7ea863e5c41992e40f44a12e099c3aa"
   },
   "app/layout.tsx": {
-    "mtime": 1782406936.185205,
-    "ast_hash": "2d177a5641f55232eb4f9aef2c7c10c2",
-    "semantic_hash": "2d177a5641f55232eb4f9aef2c7c10c2"
+    "mtime": 1784481215.6803944,
+    "ast_hash": "673fd1d3560496a38e6010e8e2da9df7",
+    "semantic_hash": ""
   },
   "app/loading.tsx": {
     "mtime": 1778075113.4050522,
@@ -160,7 +155,7 @@
     "semantic_hash": "56cc9d1fa52a31654b6d67744869a280"
   },
   "components/data-renderer.tsx": {
-    "mtime": 1783710505.905409,
+    "mtime": 1784468297.2379606,
     "ast_hash": "4bade97dbf5c3135c027ddbe91cb28dd",
     "semantic_hash": "4bade97dbf5c3135c027ddbe91cb28dd"
   },
@@ -170,9 +165,9 @@
     "semantic_hash": "5a00ac84ce8174f964b93b793e4fbe52"
   },
   "components/editor/preview.tsx": {
-    "mtime": 1784051429.5992885,
-    "ast_hash": "9bd4d2586fe68f549de280c809352ad8",
-    "semantic_hash": "9bd4d2586fe68f549de280c809352ad8"
+    "mtime": 1784473712.598544,
+    "ast_hash": "c9189c16cc6f9a313fcc7ef3f2b1532d",
+    "semantic_hash": ""
   },
   "components/filters/homeFiltering.tsx": {
     "mtime": 1781892102.2988887,
@@ -185,9 +180,9 @@
     "semantic_hash": "af5bc79ad7b6c77453c141910d5dd97e"
   },
   "components/forms/questionForm.tsx": {
-    "mtime": 1783615575.4530988,
-    "ast_hash": "e1b4a84136677a4b4525353c3378a21b",
-    "semantic_hash": "e1b4a84136677a4b4525353c3378a21b"
+    "mtime": 1784473230.6915514,
+    "ast_hash": "772cf069e3b64b874de874bc6b62436d",
+    "semantic_hash": ""
   },
   "components/forms/socialAuthForm.tsx": {
     "mtime": 1783171416.9245045,
@@ -395,8 +390,8 @@
     "semantic_hash": "dd09d3f87b8973a16916718b9a4e98a0"
   },
   "lib/actions/question.action.ts": {
-    "mtime": 1784133944.5437658,
-    "ast_hash": "3c5dd9ab40e41910d7931a651091ca32",
+    "mtime": 1784217957.9612606,
+    "ast_hash": "5c2aba02bf4763f10445c22aa39492fa",
     "semantic_hash": ""
   },
   "lib/actions/tag.action.ts": {
@@ -450,9 +445,9 @@
     "semantic_hash": "b4dde81d886cc2d749769cd1be65a025"
   },
   "lib/zod/validation.ts": {
-    "mtime": 1784052882.2714095,
-    "ast_hash": "6dfc5697a86e2161e65866cc14f76316",
-    "semantic_hash": "6dfc5697a86e2161e65866cc14f76316"
+    "mtime": 1784468389.7739244,
+    "ast_hash": "7f5510b69e790abc5342af1a84a9366c",
+    "semantic_hash": ""
   },
   "next.config.ts": {
     "mtime": 1783271354.4410875,
@@ -480,14 +475,14 @@
     "semantic_hash": "02fc19ad21338c2ab820a70136310db4"
   },
   "types/action.d.ts": {
-    "mtime": 1784052905.1300921,
-    "ast_hash": "58cff74024c6f8b18e17fa9a369e40e2",
-    "semantic_hash": "58cff74024c6f8b18e17fa9a369e40e2"
+    "mtime": 1784468117.0152678,
+    "ast_hash": "57026c05ef74308b9669d795ca84fe0e",
+    "semantic_hash": ""
   },
   "types/global.d.ts": {
-    "mtime": 1783965966.1672637,
-    "ast_hash": "558bdb61e6aaac906467003cd7383215",
-    "semantic_hash": "558bdb61e6aaac906467003cd7383215"
+    "mtime": 1784469756.6625657,
+    "ast_hash": "b208f83ba81b277be6bfd72c1a5980fd",
+    "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
     "mtime": 1784131362.1158502,
@@ -658,5 +653,25 @@
     "mtime": 1783708104.3813515,
     "ast_hash": "473567351ef0f6b1e8ca4a5ca1f7069b",
     "semantic_hash": "473567351ef0f6b1e8ca4a5ca1f7069b"
+  },
+  "components/forms/answerForm.tsx": {
+    "mtime": 1784474371.975561,
+    "ast_hash": "330cd7eada6e41676fcd887e76b4ea1a",
+    "semantic_hash": ""
+  },
+  "lib/actions/answer.action.ts": {
+    "mtime": 1784469791.6968644,
+    "ast_hash": "a92ee802019bead9690faf89f5ba6e69",
+    "semantic_hash": ""
+  },
+  "public/icons/sparkles.svg": {
+    "mtime": 1784217072.678655,
+    "ast_hash": "81849726829105ce666eaa4d3910b545",
+    "semantic_hash": ""
+  },
+  "components/answers/answers.tsx": {
+    "mtime": 1784480586.1740918,
+    "ast_hash": "84537a55e83a1f663dc7da6ecf8cc200",
+    "semantic_hash": ""
   }
 }

@@ -32,8 +32,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_auth_login_page",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "page.tsx"
     },
     {
@@ -43,8 +43,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_auth_login_page_login",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "login()"
     },
     {
@@ -54,8 +54,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_auth_register_page",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "page.tsx"
     },
     {
@@ -65,8 +65,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "app_auth_register_page_register",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "register()"
     },
     {
@@ -315,34 +315,12 @@
       "label": "QuestionDetails()",
       "file_type": "code",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "app_root_questions_id_page_questiondetails",
       "community": 2,
       "community_name": "Authentication Flow",
       "norm_label": "questiondetails()"
-    },
-    {
-      "label": "view.tsx",
-      "file_type": "code",
-      "source_file": "app/(root)/questions/view.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "app_root_questions_view",
-      "community": 5,
-      "community_name": "Question Model",
-      "norm_label": "view.tsx"
-    },
-    {
-      "label": "View()",
-      "file_type": "code",
-      "source_file": "app/(root)/questions/view.tsx",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "app_root_questions_view_view",
-      "community": 5,
-      "community_name": "Question Model",
-      "norm_label": "view()"
     },
     {
       "label": "page.tsx",
@@ -351,8 +329,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_root_tags_page",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 4,
+      "community_name": "App Components",
       "norm_label": "page.tsx"
     },
     {
@@ -362,8 +340,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "app_root_tags_page_tags",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 4,
+      "community_name": "App Components",
       "norm_label": "tags()"
     },
     {
@@ -642,37 +620,15 @@
       "norm_label": "layout.tsx"
     },
     {
-      "label": "geist",
+      "label": "dmSans",
       "file_type": "code",
       "source_file": "app/layout.tsx",
-      "source_location": "L13",
+      "source_location": "L12",
       "_origin": "ast",
-      "id": "app_layout_geist",
+      "id": "app_layout_dmsans",
       "community": 7,
       "community_name": "Account Model",
-      "norm_label": "geist"
-    },
-    {
-      "label": "spaceMono",
-      "file_type": "code",
-      "source_file": "app/layout.tsx",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "app_layout_spacemono",
-      "community": 7,
-      "community_name": "Account Model",
-      "norm_label": "spacemono"
-    },
-    {
-      "label": "shareTechMono",
-      "file_type": "code",
-      "source_file": "app/layout.tsx",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "app_layout_sharetechmono",
-      "community": 7,
-      "community_name": "Account Model",
-      "norm_label": "sharetechmono"
+      "norm_label": "dmsans"
     },
     {
       "label": "metadata",
@@ -1005,14 +961,47 @@
       "norm_label": "registries"
     },
     {
+      "label": "answers.tsx",
+      "file_type": "code",
+      "source_file": "components/answers/answers.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_answers_answers",
+      "community": 2,
+      "community_name": "Authentication Flow",
+      "norm_label": "answers.tsx"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "components/answers/answers.tsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "components_answers_answers_props",
+      "community": 2,
+      "community_name": "Authentication Flow",
+      "norm_label": "props"
+    },
+    {
+      "label": "AllAnswers()",
+      "file_type": "code",
+      "source_file": "components/answers/answers.tsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "components_answers_answers_allanswers",
+      "community": 2,
+      "community_name": "Authentication Flow",
+      "norm_label": "allanswers()"
+    },
+    {
       "label": "cardTags.tsx",
       "file_type": "code",
       "source_file": "components/cards/cardTags.tsx",
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_cards_cardtags",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "cardtags.tsx"
     },
     {
@@ -1022,8 +1011,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "components_cards_cardtags_props",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "props"
     },
     {
@@ -1033,8 +1022,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "components_cards_cardtags_cardtags",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "cardtags()"
     },
     {
@@ -1044,8 +1033,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_cards_questioncard",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "questioncard.tsx"
     },
     {
@@ -1055,8 +1044,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "components_cards_questioncard_props",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "props"
     },
     {
@@ -1066,8 +1055,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_cards_questioncard_questioncard",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "questioncard()"
     },
     {
@@ -1214,6 +1203,50 @@
       "norm_label": "homefilter()"
     },
     {
+      "label": "answerForm.tsx",
+      "file_type": "code",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_forms_answerform",
+      "community": 0,
+      "community_name": "UI Components",
+      "norm_label": "answerform.tsx"
+    },
+    {
+      "label": "Editor",
+      "file_type": "code",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "components_forms_answerform_editor",
+      "community": 0,
+      "community_name": "UI Components",
+      "norm_label": "editor"
+    },
+    {
+      "label": "AnswerFormProps",
+      "file_type": "code",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "components_forms_answerform_answerformprops",
+      "community": 0,
+      "community_name": "UI Components",
+      "norm_label": "answerformprops"
+    },
+    {
+      "label": "AnswerForm()",
+      "file_type": "code",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "components_forms_answerform_answerform",
+      "community": 0,
+      "community_name": "UI Components",
+      "norm_label": "answerform()"
+    },
+    {
       "label": "authForms.tsx",
       "file_type": "code",
       "source_file": "components/forms/authForms.tsx",
@@ -1242,8 +1275,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "components_forms_authforms_authform",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "authform()"
     },
     {
@@ -1253,8 +1286,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_forms_questionform",
-      "community": 0,
-      "community_name": "UI Components",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "questionform.tsx"
     },
     {
@@ -1264,8 +1297,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "components_forms_questionform_editor",
-      "community": 0,
-      "community_name": "UI Components",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "editor"
     },
     {
@@ -1275,8 +1308,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "components_forms_questionform_params",
-      "community": 0,
-      "community_name": "UI Components",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "params"
     },
     {
@@ -1286,8 +1319,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "components_forms_questionform_questionform",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "questionform()"
     },
     {
@@ -1319,8 +1352,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_metric",
-      "community": 88,
-      "community_name": "utils.ts",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "metric.tsx"
     },
     {
@@ -1330,8 +1363,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "components_metric_props",
-      "community": 88,
-      "community_name": "utils.ts",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "props"
     },
     {
@@ -1341,8 +1374,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "components_metric_metric",
-      "community": 88,
-      "community_name": "utils.ts",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "metric()"
     },
     {
@@ -1374,8 +1407,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_navigation_navbar_index",
-      "community": 11,
-      "community_name": "UI Components",
+      "community": 7,
+      "community_name": "Account Model",
       "norm_label": "index.tsx"
     },
     {
@@ -1385,8 +1418,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "components_navigation_navbar_index_navbar",
-      "community": 11,
-      "community_name": "UI Components",
+      "community": 7,
+      "community_name": "Account Model",
       "norm_label": "navbar()"
     },
     {
@@ -1616,8 +1649,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_ui_badge",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "badge.tsx"
     },
     {
@@ -1627,8 +1660,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_ui_badge_badgevariants",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "badgevariants"
     },
     {
@@ -1638,8 +1671,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "components_ui_badge_badge",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "badge()"
     },
     {
@@ -2177,8 +2210,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_ui_input",
-      "community": 0,
-      "community_name": "UI Components",
+      "community": 87,
+      "community_name": "input-group.tsx",
       "norm_label": "input.tsx"
     },
     {
@@ -2188,8 +2221,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_ui_input_input",
-      "community": 0,
-      "community_name": "UI Components",
+      "community": 87,
+      "community_name": "input-group.tsx",
       "norm_label": "input()"
     },
     {
@@ -2573,8 +2606,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "constants_techdescription",
-      "community": 88,
-      "community_name": "utils.ts",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "techdescription.ts"
     },
     {
@@ -2584,8 +2617,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "constants_techdescription_techdescriptionmap",
-      "community": 88,
-      "community_name": "utils.ts",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "techdescriptionmap"
     },
     {
@@ -2595,8 +2628,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "constants_techmap",
-      "community": 88,
-      "community_name": "utils.ts",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "techmap.ts"
     },
     {
@@ -2606,8 +2639,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "constants_techmap_techmap",
-      "community": 88,
-      "community_name": "utils.ts",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "techmap"
     },
     {
@@ -2683,8 +2716,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "database_answer_model",
-      "community": 16,
-      "community_name": "Answer Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "answer.model.ts"
     },
     {
@@ -2694,8 +2727,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "database_answer_model_ianswer",
-      "community": 16,
-      "community_name": "Answer Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "ianswer"
     },
     {
@@ -2705,8 +2738,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "database_answer_model_ianswerdoc",
-      "community": 16,
-      "community_name": "Answer Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "ianswerdoc"
     },
     {
@@ -2716,8 +2749,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "database_answer_model_answerschema",
-      "community": 16,
-      "community_name": "Answer Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "answerschema"
     },
     {
@@ -2727,8 +2760,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "database_collection_model",
-      "community": 17,
-      "community_name": "Collection Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "collection.model.ts"
     },
     {
@@ -2738,8 +2771,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "database_collection_model_icollection",
-      "community": 17,
-      "community_name": "Collection Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "icollection"
     },
     {
@@ -2749,8 +2782,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "database_collection_model_icollectiondoc",
-      "community": 17,
-      "community_name": "Collection Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "icollectiondoc"
     },
     {
@@ -2760,8 +2793,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "database_collection_model_collectionschema",
-      "community": 17,
-      "community_name": "Collection Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "collectionschema"
     },
     {
@@ -2771,8 +2804,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "database_index",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "index.ts"
     },
     {
@@ -2837,8 +2870,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "database_question_model",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "question.model.ts"
     },
     {
@@ -2848,8 +2881,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "database_question_model_iquestion",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "iquestion"
     },
     {
@@ -2859,8 +2892,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "database_question_model_iquestiondoc",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "iquestiondoc"
     },
     {
@@ -2870,8 +2903,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "database_question_model_questionschema",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "questionschema"
     },
     {
@@ -2881,8 +2914,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "database_tag_question_model",
-      "community": 18,
-      "community_name": "Tag Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "tag-question.model.ts"
     },
     {
@@ -2892,8 +2925,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "database_tag_question_model_itagquestion",
-      "community": 18,
-      "community_name": "Tag Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "itagquestion"
     },
     {
@@ -2903,8 +2936,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "database_tag_question_model_itagquestiondoc",
-      "community": 18,
-      "community_name": "Tag Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "itagquestiondoc"
     },
     {
@@ -2914,8 +2947,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "database_tag_question_model_tagquestionschema",
-      "community": 18,
-      "community_name": "Tag Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "tagquestionschema"
     },
     {
@@ -2925,8 +2958,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "database_tag_model",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "tag.model.ts"
     },
     {
@@ -2936,8 +2969,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "database_tag_model_itag",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "itag"
     },
     {
@@ -2947,8 +2980,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "database_tag_model_itagdoc",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "itagdoc"
     },
     {
@@ -2958,8 +2991,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "database_tag_model_tagschema",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "tagschema"
     },
     {
@@ -3013,8 +3046,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "database_vote_model",
-      "community": 19,
-      "community_name": "Vote Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "vote.model.ts"
     },
     {
@@ -3024,8 +3057,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "database_vote_model_ivote",
-      "community": 19,
-      "community_name": "Vote Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "ivote"
     },
     {
@@ -3035,8 +3068,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "database_vote_model_ivotedoc",
-      "community": 19,
-      "community_name": "Vote Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "ivotedoc"
     },
     {
@@ -3046,8 +3079,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "database_vote_model_voteschema",
-      "community": 19,
-      "community_name": "Vote Model",
+      "community": 15,
+      "community_name": "Interaction Model",
       "norm_label": "voteschema"
     },
     {
@@ -3073,14 +3106,47 @@
       "norm_label": "eslintconfig"
     },
     {
+      "label": "answer.action.ts",
+      "file_type": "code",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_actions_answer_action",
+      "community": 2,
+      "community_name": "Authentication Flow",
+      "norm_label": "answer.action.ts"
+    },
+    {
+      "label": "createAnswer()",
+      "file_type": "code",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "lib_actions_answer_action_createanswer",
+      "community": 2,
+      "community_name": "Authentication Flow",
+      "norm_label": "createanswer()"
+    },
+    {
+      "label": "getAnswers()",
+      "file_type": "code",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "lib_actions_answer_action_getanswers",
+      "community": 2,
+      "community_name": "Authentication Flow",
+      "norm_label": "getanswers()"
+    },
+    {
       "label": "auth.action.ts",
       "file_type": "code",
       "source_file": "lib/actions/auth.action.ts",
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_actions_auth_action",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "auth.action.ts"
     },
     {
@@ -3090,8 +3156,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "lib_actions_auth_action_registerwithcredintials",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "registerwithcredintials()"
     },
     {
@@ -3101,8 +3167,8 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "lib_actions_auth_action_loginwithcredintials",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "loginwithcredintials()"
     },
     {
@@ -3112,37 +3178,37 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_actions_question_action",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "question.action.ts"
     },
     {
       "label": "createQuestion()",
       "file_type": "code",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L13",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "lib_actions_question_action_createquestion",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "createquestion()"
     },
     {
       "label": "editQuestion()",
       "file_type": "code",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L75",
+      "source_location": "L81",
       "_origin": "ast",
       "id": "lib_actions_question_action_editquestion",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "editquestion()"
     },
     {
       "label": "getQuestion()",
       "file_type": "code",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L180",
+      "source_location": "L186",
       "_origin": "ast",
       "id": "lib_actions_question_action_getquestion",
       "community": 2,
@@ -3153,22 +3219,22 @@
       "label": "getQuestions()",
       "file_type": "code",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L211",
+      "source_location": "L217",
       "_origin": "ast",
       "id": "lib_actions_question_action_getquestions",
-      "community": 4,
-      "community_name": "App Components",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "getquestions()"
     },
     {
       "label": "increaseViewCount()",
       "file_type": "code",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L276",
+      "source_location": "L281",
       "_origin": "ast",
       "id": "lib_actions_question_action_increaseviewcount",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "increaseviewcount()"
     },
     {
@@ -3178,8 +3244,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_actions_tag_action",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "tag.action.ts"
     },
     {
@@ -3189,8 +3255,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "lib_actions_tag_action_gettags",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 4,
+      "community_name": "App Components",
       "norm_label": "gettags()"
     },
     {
@@ -3200,8 +3266,8 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "lib_actions_tag_action_gettagquestions",
-      "community": 86,
-      "community_name": "global.d.ts",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "gettagquestions()"
     },
     {
@@ -3244,8 +3310,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "lib_handlers_error_handleerror",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "handleerror()"
     },
     {
@@ -3332,8 +3398,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "lib_handlers_server_action_serveraction",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "serveraction()"
     },
     {
@@ -3563,7 +3629,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_routes_api",
-      "community": 7,
+      "community": 1,
       "community_name": "Account Model",
       "norm_label": "api.ts"
     },
@@ -3640,8 +3706,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_utils",
-      "community": 88,
-      "community_name": "utils.ts",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "utils.ts"
     },
     {
@@ -3662,8 +3728,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_utils_deviconclassname",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "deviconclassname()"
     },
     {
@@ -3673,8 +3739,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "lib_utils_gettechdescription",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "gettechdescription()"
     },
     {
@@ -3684,8 +3750,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "lib_utils_gettimestamp",
-      "community": 2,
-      "community_name": "Authentication Flow",
+      "community": 5,
+      "community_name": "Question Model",
       "norm_label": "gettimestamp()"
     },
     {
@@ -3706,8 +3772,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_zod_validation",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "validation.ts"
     },
     {
@@ -3717,8 +3783,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "lib_zod_validation_loginschema",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "loginschema"
     },
     {
@@ -3728,8 +3794,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "lib_zod_validation_registerschema",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "registerschema"
     },
     {
@@ -3772,8 +3838,8 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "lib_zod_validation_askquestionschema",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "askquestionschema"
     },
     {
@@ -3783,8 +3849,8 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "lib_zod_validation_editquestionschema",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "editquestionschema"
     },
     {
@@ -3794,8 +3860,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "lib_zod_validation_getquestionschema",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "getquestionschema"
     },
     {
@@ -3805,8 +3871,8 @@
       "source_location": "L124",
       "_origin": "ast",
       "id": "lib_zod_validation_paginationschema",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "paginationschema"
     },
     {
@@ -3816,8 +3882,8 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "lib_zod_validation_gettagquestionsschema",
-      "community": 1,
-      "community_name": "Account Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "gettagquestionsschema"
     },
     {
@@ -3827,9 +3893,42 @@
       "source_location": "L136",
       "_origin": "ast",
       "id": "lib_zod_validation_increaseviewcountschema",
-      "community": 5,
-      "community_name": "Question Model",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "increaseviewcountschema"
+    },
+    {
+      "label": "AnswerSchema",
+      "file_type": "code",
+      "source_file": "lib/zod/validation.ts",
+      "source_location": "L140",
+      "_origin": "ast",
+      "id": "lib_zod_validation_answerschema",
+      "community": 0,
+      "community_name": "UI Components",
+      "norm_label": "answerschema"
+    },
+    {
+      "label": "CreateAnswerSchema",
+      "file_type": "code",
+      "source_file": "lib/zod/validation.ts",
+      "source_location": "L144",
+      "_origin": "ast",
+      "id": "lib_zod_validation_createanswerschema",
+      "community": 2,
+      "community_name": "Authentication Flow",
+      "norm_label": "createanswerschema"
+    },
+    {
+      "label": "GetAnswersSchema",
+      "file_type": "code",
+      "source_file": "lib/zod/validation.ts",
+      "source_location": "L148",
+      "_origin": "ast",
+      "id": "lib_zod_validation_getanswersschema",
+      "community": 2,
+      "community_name": "Authentication Flow",
+      "norm_label": "getanswersschema"
     },
     {
       "label": "next.config.ts",
@@ -4058,8 +4157,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "package_dependencies_bcryptjs",
-      "community": 31,
-      "community_name": "Bcryptjs Configuration",
+      "community": 16,
+      "community_name": "validation.ts",
       "norm_label": "bcryptjs"
     },
     {
@@ -4069,8 +4168,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "bcryptjs",
-      "community": 31,
-      "community_name": "Bcryptjs Configuration",
+      "community": 16,
+      "community_name": "validation.ts",
       "norm_label": "bcryptjs"
     },
     {
@@ -4080,8 +4179,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "package_dependencies_bright",
-      "community": 32,
-      "community_name": "Bright Configuration",
+      "community": 17,
+      "community_name": "Collection Model",
       "norm_label": "bright"
     },
     {
@@ -4091,8 +4190,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "bright",
-      "community": 32,
-      "community_name": "Bright Configuration",
+      "community": 17,
+      "community_name": "Collection Model",
       "norm_label": "bright"
     },
     {
@@ -5529,12 +5628,34 @@
       "label": "IncreaseViewCountParams",
       "file_type": "code",
       "source_file": "types/action.d.ts",
-      "source_location": "L40",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "types_action_d_increaseviewcountparams",
       "community": 13,
       "community_name": "Action Loginoauthparams",
       "norm_label": "increaseviewcountparams"
+    },
+    {
+      "label": "CreateAnswerParams",
+      "file_type": "code",
+      "source_file": "types/action.d.ts",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "types_action_d_createanswerparams",
+      "community": 13,
+      "community_name": "Action Loginoauthparams",
+      "norm_label": "createanswerparams"
+    },
+    {
+      "label": "GetAnswerParams",
+      "file_type": "code",
+      "source_file": "types/action.d.ts",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "types_action_d_getanswerparams",
+      "community": 13,
+      "community_name": "Action Loginoauthparams",
+      "norm_label": "getanswerparams"
     },
     {
       "label": "global.d.ts",
@@ -5576,8 +5697,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "types_global_d_question",
-      "community": 86,
-      "community_name": "global.d.ts",
+      "community": 2,
+      "community_name": "Authentication Flow",
       "norm_label": "question"
     },
     {
@@ -5656,6 +5777,17 @@
       "community": 86,
       "community_name": "global.d.ts",
       "norm_label": "paginationparams"
+    },
+    {
+      "label": "AnswerType",
+      "file_type": "code",
+      "source_file": "types/global.d.ts",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "types_global_d_answertype",
+      "community": 86,
+      "community_name": "global.d.ts",
+      "norm_label": "answertype"
     },
     {
       "label": "graphify.md",
@@ -6995,7 +7127,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7007,11 +7139,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
-      "target": "app_root_questions_view",
+      "target": "components_answers_answers",
       "confidence_score": 1.0
     },
     {
@@ -7019,11 +7151,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
-      "target": "app_root_questions_view_view",
+      "target": "components_answers_answers_allanswers",
       "confidence_score": 1.0
     },
     {
@@ -7031,7 +7163,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L11",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7043,7 +7175,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L12",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7051,11 +7183,35 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/questions/[id]/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_root_questions_id_page",
+      "target": "components_editor_preview_preview",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L7",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_root_questions_id_page",
+      "target": "components_forms_answerform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/questions/[id]/page.tsx",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7079,7 +7235,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L5",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7091,7 +7247,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L5",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7103,7 +7259,31 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L13",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_root_questions_id_page",
+      "target": "lib_actions_answer_action",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/questions/[id]/page.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_root_questions_id_page",
+      "target": "lib_actions_answer_action_getanswers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/questions/[id]/page.tsx",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7115,7 +7295,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L13",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7123,11 +7303,23 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/(root)/questions/[id]/page.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_root_questions_id_page",
+      "target": "lib_actions_question_action_increaseviewcount",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7139,7 +7331,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7151,7 +7343,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page",
@@ -7164,7 +7356,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L37",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page_questiondetails",
@@ -7176,7 +7368,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L19",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_root_questions_id_page_questiondetails",
+      "target": "lib_actions_answer_action_getanswers"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/questions/[id]/page.tsx",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page_questiondetails",
@@ -7188,7 +7392,19 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L66",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_root_questions_id_page_questiondetails",
+      "target": "lib_actions_question_action_increaseviewcount"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/(root)/questions/[id]/page.tsx",
+      "source_location": "L81",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page_questiondetails",
@@ -7200,58 +7416,11 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/(root)/questions/[id]/page.tsx",
-      "source_location": "L52",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_root_questions_id_page_questiondetails",
       "target": "lib_utils_gettimestamp"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/questions/view.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_root_questions_view",
-      "target": "app_root_questions_view_view",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/questions/view.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_root_questions_view",
-      "target": "lib_actions_question_action",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/questions/view.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_root_questions_view",
-      "target": "lib_actions_question_action_increaseviewcount",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/(root)/questions/view.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_root_questions_view_view",
-      "target": "lib_actions_question_action_increaseviewcount",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8693,11 +8862,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/layout.tsx",
-      "source_location": "L13",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_layout",
-      "target": "app_layout_geist",
+      "target": "app_layout_dmsans",
       "confidence_score": 1.0
     },
     {
@@ -8723,33 +8892,11 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/layout.tsx",
-      "source_location": "L24",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_layout",
-      "target": "app_layout_sharetechmono",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/layout.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "app_layout",
-      "target": "app_layout_spacemono",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/layout.tsx",
-      "source_location": "L11",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_layout",
@@ -8761,7 +8908,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/layout.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_layout",
@@ -8773,7 +8920,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/layout.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_layout",
@@ -8785,7 +8932,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/layout.tsx",
-      "source_location": "L7",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_layout",
@@ -8797,7 +8944,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/layout.tsx",
-      "source_location": "L7",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_layout",
@@ -8809,7 +8956,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/layout.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_layout",
@@ -8821,7 +8968,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/layout.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_layout",
@@ -9293,6 +9440,28 @@
       "_origin": "ast",
       "source": "components_aliases",
       "target": "components_aliases_utils",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/answers/answers.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_answers_answers",
+      "target": "components_answers_answers_allanswers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/answers/answers.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_answers_answers",
+      "target": "components_answers_answers_props",
       "confidence_score": 1.0
     },
     {
@@ -9857,6 +10026,171 @@
       "_origin": "ast",
       "source": "components_filters_homefiltering_homefilter",
       "target": "lib_utils_cn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_forms_answerform_answerform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_forms_answerform_answerformprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_forms_answerform_editor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_ui_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_ui_button_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_ui_field",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_ui_field_field",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_ui_field_fielddescription",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "components_ui_field_fieldgroup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "lib_actions_answer_action",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "lib_actions_answer_action_createanswer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "lib_zod_validation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform",
+      "target": "lib_zod_validation_answerschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/forms/answerForm.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "components_forms_answerform_answerform",
+      "target": "lib_actions_answer_action_createanswer"
     },
     {
       "relation": "contains",
@@ -12978,6 +13312,18 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "constants_routes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "lib/routes/api.ts",
       "source_location": "L6",
       "weight": 1.0,
@@ -12997,6 +13343,30 @@
       "source": "constants_states",
       "target": "constants_routes_routes",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "constants_routes_routes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action_createanswer",
+      "target": "constants_routes_routes"
     },
     {
       "relation": "imports",
@@ -13305,6 +13675,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "database_answer_model",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "inherits",
       "context": "type",
       "confidence": "EXTRACTED",
@@ -13314,6 +13696,18 @@
       "_origin": "ast",
       "source": "database_answer_model_ianswerdoc",
       "target": "database_answer_model_ianswer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "database_answer_model_ianswerdoc",
       "confidence_score": 1.0
     },
     {
@@ -13449,6 +13843,18 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "database_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "lib/actions/auth.action.ts",
       "source_location": "L9",
       "weight": 1.0,
@@ -13462,7 +13868,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L8",
+      "source_location": "L14",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -13587,7 +13993,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L11",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -13611,7 +14017,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L11",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -13701,7 +14107,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L10",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -13725,7 +14131,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L10",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -13738,7 +14144,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L114",
+      "source_location": "L120",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_editquestion",
@@ -13868,6 +14274,172 @@
       "source": "eslint_config",
       "target": "eslint_config_eslintconfig",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_actions_answer_action_createanswer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_actions_answer_action_getanswers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_handlers_error",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_handlers_error_handleerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_handlers_server_action",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_handlers_server_action_serveraction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_zod_validation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_zod_validation_createanswerschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action",
+      "target": "lib_zod_validation_getanswersschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action_createanswer",
+      "target": "lib_handlers_error_handleerror"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action_createanswer",
+      "target": "lib_handlers_server_action_serveraction"
+    },
+    {
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action_createanswer",
+      "target": "types_global_d_question"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action_getanswers",
+      "target": "lib_handlers_error_handleerror"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/actions/answer.action.ts",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_answer_action_getanswers",
+      "target": "lib_handlers_server_action_serveraction"
     },
     {
       "relation": "contains",
@@ -14051,7 +14623,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L13",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -14062,7 +14634,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L75",
+      "source_location": "L81",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -14073,7 +14645,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L180",
+      "source_location": "L186",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -14084,7 +14656,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L211",
+      "source_location": "L217",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -14095,7 +14667,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L276",
+      "source_location": "L281",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -14107,7 +14679,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L6",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -14119,7 +14691,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L6",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action",
@@ -14228,7 +14800,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L21",
+      "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_createquestion",
@@ -14240,7 +14812,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L14",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_createquestion",
@@ -14252,7 +14824,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L83",
+      "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_editquestion",
@@ -14264,7 +14836,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L76",
+      "source_location": "L82",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_editquestion",
@@ -14276,7 +14848,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L188",
+      "source_location": "L194",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_getquestion",
@@ -14288,7 +14860,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L181",
+      "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_getquestion",
@@ -14300,11 +14872,23 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L194",
+      "source_location": "L200",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_getquestion",
       "target": "types_global_d_question"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/actions/question.action.ts",
+      "source_location": "L226",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_actions_question_action_getquestions",
+      "target": "lib_handlers_error_handleerror"
     },
     {
       "relation": "calls",
@@ -14316,18 +14900,6 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_getquestions",
-      "target": "lib_handlers_error_handleerror"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/actions/question.action.ts",
-      "source_location": "L214",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "lib_actions_question_action_getquestions",
       "target": "lib_handlers_server_action_serveraction"
     },
     {
@@ -14336,7 +14908,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L253",
+      "source_location": "L259",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_getquestions",
@@ -14348,7 +14920,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L283",
+      "source_location": "L288",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_increaseviewcount",
@@ -14360,7 +14932,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L277",
+      "source_location": "L282",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_increaseviewcount",
@@ -14372,7 +14944,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/actions/question.action.ts",
-      "source_location": "L289",
+      "source_location": "L294",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_actions_question_action_increaseviewcount",
@@ -15375,6 +15947,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/zod/validation.ts",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_zod_validation",
+      "target": "lib_zod_validation_answerschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/zod/validation.ts",
       "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
@@ -15386,11 +15969,33 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lib/zod/validation.ts",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_zod_validation",
+      "target": "lib_zod_validation_createanswerschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/zod/validation.ts",
       "source_location": "L116",
       "weight": 1.0,
       "_origin": "ast",
       "source": "lib_zod_validation",
       "target": "lib_zod_validation_editquestionschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/zod/validation.ts",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "lib_zod_validation",
+      "target": "lib_zod_validation_getanswersschema",
       "confidence_score": 1.0
     },
     {
@@ -17140,6 +17745,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "types/action.d.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "types_action_d",
+      "target": "types_action_d_createanswerparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "types/action.d.ts",
       "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
@@ -17156,6 +17772,17 @@
       "_origin": "ast",
       "source": "types_action_d",
       "target": "types_action_d_editquestionparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "types/action.d.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "types_action_d",
+      "target": "types_action_d_getanswerparams",
       "confidence_score": 1.0
     },
     {
@@ -17184,7 +17811,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "types/action.d.ts",
-      "source_location": "L40",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "types_action_d",
@@ -17223,6 +17850,17 @@
       "_origin": "ast",
       "source": "types_global_d",
       "target": "types_global_d_actionresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "types/global.d.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "types_global_d",
+      "target": "types_global_d_answertype",
       "confidence_score": 1.0
     },
     {
@@ -17560,5 +18198,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9553ef77ae17beb8717246d40f06ca501c3c884b"
+  "built_at_commit": "b7f75ec53a4764c92f43e44bc5118b10c873a3b6"
 }

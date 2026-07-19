@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import ThemeProvider from "@/context/theme";
 import { Toaster } from "@/components/ui/sonner";
@@ -10,24 +9,25 @@ import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 import { auth } from "@/auth";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
-
-const spaceMono = localFont({
-  variable: "--font-space-mono",
-  src: "./fonts/SpaceMonoVF.ttf",
-  weight: "400 700",
-  style: "normal",
-  display: "swap",
-  preload: false,
-});
-
-const shareTechMono = localFont({
-  variable: "--font-sharetechmono",
-  src: "./fonts/ShareTechMonoVF.ttf",
-  weight: "400",
-  style: "normal",
-  display: "swap",
-  preload: false,
+const dmSans = localFont({
+  src: [
+    {
+      path: "./fonts/DMSansR-VF.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/DMSans-Medium-VF.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/DMSans-Bold-VF.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -41,11 +41,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();
 
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn("h-full", "antialiased", spaceMono.variable, shareTechMono.variable, "font-sans", geist.variable)}
-    >
+    <html lang="en" suppressHydrationWarning className={cn("h-full", "antialiased", "font-sans", dmSans.variable)}>
       <head>
         <link
           rel="stylesheet"

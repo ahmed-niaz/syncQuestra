@@ -1,6 +1,5 @@
 import UserAvatar from "@/components/user-avatar";
 import { RouteParams, Tags } from "@/types/global";
-import profile from "@/public/images/dark-error_illustration.svg";
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import clock from "@/public/icons/clock.svg";
@@ -14,16 +13,30 @@ import { getQuestion, increaseViewCount } from "@/lib/actions/question.action";
 import { redirect } from "next/navigation";
 import { after } from "next/server";
 import AnswerForm from "@/components/forms/answerForm";
+import { getAnswers } from "@/lib/actions/answer.action";
+import AllAnswers from "@/components/answers/answers";
 
 const QuestionDetails = async ({ params }: RouteParams) => {
-  const { id } = await params;
-
-  const { success, data: quesitonData } = await getQuestion({ questionId: id });
+  const { id: questionId } = await params;
+  const { success, data: quesitonData } = await getQuestion({ questionId });
   after(async () => {
-    await increaseViewCount({ questionId: id });
+    await increaseViewCount({ questionId });
   });
 
   if (!success || !quesitonData) return redirect("/404");
+
+  // fetch answer from the database using server action
+  const {
+    success: answerSuccess,
+    data: answerResult,
+    error: answerError,
+  } = await getAnswers({
+    questionId,
+    page: 1,
+    pageSize: 10,
+  });
+
+  if (!answerSuccess || !answerResult) return redirect("/404");
 
   const { content, author, createdAt, answers, views, tags, title } = quesitonData;
   return (
@@ -79,7 +92,15 @@ const QuestionDetails = async ({ params }: RouteParams) => {
         ))}
       </div>
       <section className="my-5">
-        <AnswerForm questionId={id} />
+        <AllAnswers
+          data={answerResult?.answers}
+          error={answerError}
+          success={answerSuccess}
+          totalAnswers={answerResult?.totalAnswers || 0}
+        />
+      </section>
+      <section className="my-5">
+        <AnswerForm questionId={quesitonData._id} />
       </section>
     </>
   );

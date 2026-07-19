@@ -32,7 +32,9 @@ const UserAvatar = async ({ id, name, imageSrc, fallbackClassName, className = "
             className="h-full w-full rounded-full object-cover"
           />
         ) : (
-          <AvatarFallback className={cn("primary-gradient text-xl font-bold text-white", fallbackClassName)}>
+          <AvatarFallback
+            className={cn("primary-gradient primary-text-gradient text-xl font-medium", fallbackClassName)}
+          >
             {intials}
           </AvatarFallback>
         )}

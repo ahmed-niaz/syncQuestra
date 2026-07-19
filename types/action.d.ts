@@ -39,3 +39,12 @@ export interface GetTagQuestionParams extends Omit<PaginationParams, "filter"> {
 export interface IncreaseViewCountParams {
   questionId: string;
 }
+
+export interface CreateAnswerParams {
+  questionId: string;
+  content: string;
+}
+
+export interface GetAnswerParams extends PaginationParams {
+  questionId: string;
+}

@@ -1,9 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, DefaultValues, Path, useForm } from "react-hook-form";
-import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { useRef, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { Field, FieldDescription, FieldGroup } from "@/components/ui/field";
+import { useRef, useState, useTransition } from "react";
 import { AnswerSchema } from "@/lib/zod/validation";
 import * as z from "zod";
 import dynamic from "next/dynamic";
@@ -12,6 +12,8 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import sparkle from "@/public/icons/sparkles.svg";
+import { createAnswer } from "@/lib/actions/answer.action";
+import { toast } from "sonner";
 
 const Editor = dynamic(() => import("@/components/editor"), { ssr: false });
 
@@ -20,7 +22,7 @@ interface AnswerFormProps {
 }
 
 const AnswerForm = ({ questionId }: AnswerFormProps) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAnswering, startTransition] = useTransition();
   const [isAiSubmitting, setIsAiSubmitting] = useState(false);
   const editorRef = useRef<MDXEditorMethods | null>(null);
 
@@ -30,7 +32,19 @@ const AnswerForm = ({ questionId }: AnswerFormProps) => {
   });
 
   const handleSubmitBtn = async (values: z.infer<typeof AnswerSchema>) => {
-    console.log("answer", values);
+    startTransition(async () => {
+      const result = await createAnswer({
+        questionId,
+        content: values.content,
+      });
+
+      if (result.success) {
+        form.reset();
+        toast.success("Answered successfully.");
+      } else {
+        toast.error("Failed to answer.");
+      }
+    });
   };
 
   return (
@@ -49,7 +63,7 @@ const AnswerForm = ({ questionId }: AnswerFormProps) => {
           ) : (
             <>
               <Image alt="generate ai answer" src={sparkle} width={20} height={20} className="invert-colors" />
-              <span>Generate AI Answer</span>
+              <span className="primary-text-gradient">Generate Ai Answer</span>
             </>
           )}
         </Button>
@@ -71,10 +85,10 @@ const AnswerForm = ({ questionId }: AnswerFormProps) => {
           <div className="flex justify-end">
             <Button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isAnswering}
               className="primary-gradient min-h-14 w-fit cursor-pointer rounded-xl px-16 py-4 text-[16px] text-white shadow-lg"
             >
-              {isSubmitting ? (
+              {isAnswering ? (
                 <>
                   <ReloadIcon className="mr-2 size-4 animate-spin" />
                   <span>Posting...</span>

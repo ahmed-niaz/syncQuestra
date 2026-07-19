@@ -50,3 +50,10 @@ interface PaginationParams {
   filter?: string;
   query?: string;
 }
+
+interface AnswerType {
+  _id: string;
+  author: Author;
+  content: string;
+  createdAt: Date;
+}

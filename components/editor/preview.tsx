@@ -7,7 +7,7 @@ Code.theme = {
   lightSelector: "html.light",
 };
 const Preview = ({ content }: { content: string }) => {
-  const contentFormat = content.replace(/\\/g, "").replace(/&#x20;/g, "");
+  const contentFormat = content.replace(/&#x20;/g, " ");
 
   return (
     <section className="markdown prose grid break-words">

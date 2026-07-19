@@ -15,10 +15,8 @@
   "13": "Action Loginoauthparams",
   "14": "Svg Chevron",
   "15": "Interaction Model",
-  "16": "Answer Model",
+  "16": "validation.ts",
   "17": "Collection Model",
-  "18": "Tag Model",
-  "19": "Vote Model",
   "20": "Graphify Knowledge",
   "21": "App Components",
   "22": "Agents Claude",
@@ -30,8 +28,6 @@
   "28": "Community Configuration",
   "29": "Findjobs Configuration",
   "30": "Profile Configuration",
-  "31": "Bcryptjs Configuration",
-  "32": "Bright Configuration",
   "33": "Card Configuration",
   "34": "Class Variance",
   "35": "Clsx Configuration",
@@ -86,6 +82,5 @@
   "84": "Light Illustration",
   "85": "cn",
   "86": "global.d.ts",
-  "87": "input-group.tsx",
-  "88": "utils.ts"
+  "87": "input-group.tsx"
 }

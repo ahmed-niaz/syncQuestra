@@ -21,7 +21,7 @@ import { Question } from "@/types/global";
 const Editor = dynamic(() => import("@/components/editor"), { ssr: false });
 
 interface Params {
-  questionData: Question;
+  questionData?: Question;
   isEdit?: boolean;
 }
 

@@ -311,7 +311,7 @@
 }
 
 .dark .primary-text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #f6f4f0 100%);
+  background:  linear-gradient(135deg, #168aad 0%, #f8f8f8 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -485,8 +485,8 @@ code {
 }
 
 @theme inline {
-  --font-space: var(--font-space-mono);
-  --font-shareTechMono: var(--font-sharetechmono);
+  --font-space: var(--font-sans);
+  --font-shareTechMono: var(--font-sans);
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);

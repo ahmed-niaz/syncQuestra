@@ -140,3 +140,11 @@ export const IncreaseViewCountSchema = z.object({
 export const AnswerSchema = z.object({
   content: z.string().min(100, "Answer must be at least 100 characters."),
 });
+
+export const CreateAnswerSchema = AnswerSchema.extend({
+  questionId: z.string().min(1, "Question ID is required"),
+});
+
+export const GetAnswersSchema = PaginationSchema.extend({
+  questionId: z.string().min(1, "Question ID is required"),
+});
