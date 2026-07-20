@@ -4,6 +4,7 @@ import { handleFetch } from "../handlers/fetch";
 import logger from "../logger";
 import { LoginOAuthParams } from "@/types/action";
 import { ROUTES } from "@/constants/routes";
+import { APISuccessResponse } from "@/types/global";
 
 const base_url = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/api";
 
@@ -64,6 +65,14 @@ export const api = {
     delete: (id: string) =>
       handleFetch(`${base_url}/accounts/${id}`, {
         method: "DELETE",
+      }),
+  },
+
+  ai: {
+    getAnswer: (question: string, content: string): APISuccessResponse<string> =>
+      handleFetch(`${base_url}/ai/answers`, {
+        method: "POST",
+        body: JSON.stringify({ question, content }),
       }),
   },
 };
