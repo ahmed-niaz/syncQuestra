@@ -2,7 +2,6 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { techMap } from "@/constants/techMap";
 import { techDescriptionMap } from "@/constants/techDescription";
-import { number } from "zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

@@ -14,16 +14,22 @@ import Image from "next/image";
 import sparkle from "@/public/icons/sparkles.svg";
 import { createAnswer } from "@/lib/actions/answer.action";
 import { toast } from "sonner";
+import { useSession } from "next-auth/react";
+import { api } from "@/lib/routes/api";
 
 const Editor = dynamic(() => import("@/components/editor"), { ssr: false });
 
 interface AnswerFormProps {
   questionId: string;
+  questionTitle?: string;
+  questionContent?: string;
 }
 
-const AnswerForm = ({ questionId }: AnswerFormProps) => {
+const AnswerForm = ({ questionId, questionTitle, questionContent }: AnswerFormProps) => {
   const [isAnswering, startTransition] = useTransition();
   const [isAiSubmitting, setIsAiSubmitting] = useState(false);
+  const session = useSession();
+
   const editorRef = useRef<MDXEditorMethods | null>(null);
 
   const form = useForm<z.infer<typeof AnswerSchema>>({
@@ -40,11 +46,48 @@ const AnswerForm = ({ questionId }: AnswerFormProps) => {
 
       if (result.success) {
         form.reset();
+        if (editorRef.current) {
+          editorRef.current.setMarkdown(" ");
+        }
         toast.success("Answered successfully.");
       } else {
         toast.error("Failed to answer.");
       }
     });
+  };
+
+  const generateAiAnswer = async () => {
+    if (session.status !== "authenticated") {
+      toast.error("Please login to generate ai answer.");
+      return;
+    }
+
+    if (!questionTitle || !questionContent) {
+      toast.error("Question title or content is missing.");
+      return;
+    }
+
+    setIsAiSubmitting(true);
+
+    try {
+      const { success, data, error } = await api.ai.getAnswer(questionTitle, questionContent);
+      if (!success || !data) {
+        toast.error(error?.message || "Failed to generate ai answer.");
+        return;
+      }
+
+      const formatedAnswer = data.text.replace(/<br>/g, "").trim();
+      if (editorRef.current) {
+        editorRef.current.setMarkdown(formatedAnswer);
+        form.setValue("content", formatedAnswer);
+        form.trigger("content");
+        toast.success("AI-generated answer loaded successfully.");
+      }
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message || "Failed to generate ai answer." : "Failed to generate ai answer.");
+    } finally {
+      setIsAiSubmitting(false);
+    }
   };
 
   return (
@@ -54,6 +97,7 @@ const AnswerForm = ({ questionId }: AnswerFormProps) => {
         <Button
           className="btn light-border-2 text-primary-500 dark:text-primary-500 hover:bg-light-850 dark:hover:bg-dark-400 cursor-pointer gap-1.5 rounded-md border px-4 py-2.5 font-medium shadow-none"
           disabled={isAiSubmitting}
+          onClick={generateAiAnswer}
         >
           {isAiSubmitting ? (
             <>
@@ -69,7 +113,13 @@ const AnswerForm = ({ questionId }: AnswerFormProps) => {
         </Button>
       </div>
       <section>
-        <form className="mt-8 flex w-full flex-col gap-6" onSubmit={form.handleSubmit(handleSubmitBtn)}>
+        <form
+          className="mt-8 flex w-full flex-col gap-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            form.handleSubmit(handleSubmitBtn)(e);
+          }}
+        >
           <FieldGroup>
             <Controller
               name="content"

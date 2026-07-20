@@ -150,9 +150,6 @@ export const GetAnswersSchema = PaginationSchema.extend({
 });
 
 export const AiAnswerSchema = z.object({
-  question: z
-    .string()
-    .min(1, { message: "Question is required." })
-    .max(130, "Question mustn't be longer than 130 characters"),
-  content: z.string().min(100, { message: "Answer must be more than 100 char" }),
+  question: z.string().min(1, { message: "Question is required." }),
+  content: z.string().min(1, { message: "Content is required." }),
 });
