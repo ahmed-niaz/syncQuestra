@@ -152,5 +152,15 @@ export const GetAnswersSchema = PaginationSchema.extend({
 export const AiAnswerSchema = z.object({
   question: z.string().min(1, { message: "Question is required." }),
   content: z.string().min(1, { message: "Content is required." }),
-  userAnswer: z.string().optional()
+  userAnswer: z.string().optional(),
+});
+
+export const CreateVotesSchema = z.object({
+  targetId: z.string().min(1, { message: "Target ID is required" }),
+  targetType: z.enum(["question", "answer"], { message: "Invalid Target Type" }),
+  voteType: z.enum(["upvotes", "downvotes"], { message: "Invalid vote type" }),
+});
+
+export const UpdateVoteCountSchema = CreateVotesSchema.extend({
+  change: z.number().int().min(-1).max(1),
 });

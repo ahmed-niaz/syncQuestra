@@ -15,6 +15,7 @@ import { after } from "next/server";
 import AnswerForm from "@/components/forms/answerForm";
 import { getAnswers } from "@/lib/actions/answer.action";
 import AllAnswers from "@/components/answers/answers";
+import Votes from "@/components/votes/votes";
 
 const QuestionDetails = async ({ params }: RouteParams) => {
   const { id: questionId } = await params;
@@ -38,7 +39,7 @@ const QuestionDetails = async ({ params }: RouteParams) => {
 
   if (!answerSuccess || !answerResult) return redirect("/404");
 
-  const { content, author, createdAt, answers, views, tags, title } = quesitonData;
+  const { content, author, createdAt, answers, views, tags, title, upvotes, downvotes } = quesitonData;
   return (
     <>
       <div className="flex-start w-full flex-col">
@@ -56,7 +57,13 @@ const QuestionDetails = async ({ params }: RouteParams) => {
             </Link>
           </div>
           <div className="flex justify-end">
-            <p>Votes</p>
+            <Votes
+              upvotes={upvotes}
+              downvotes={downvotes}
+              hasupVoted={true}
+              hasdownVoted={true}
+              questionId={quesitonData._id}
+            />
           </div>
         </div>
 
