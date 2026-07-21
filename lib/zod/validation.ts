@@ -152,4 +152,5 @@ export const GetAnswersSchema = PaginationSchema.extend({
 export const AiAnswerSchema = z.object({
   question: z.string().min(1, { message: "Question is required." }),
   content: z.string().min(1, { message: "Content is required." }),
+  userAnswer: z.string().optional()
 });

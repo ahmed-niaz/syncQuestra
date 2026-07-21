@@ -69,10 +69,10 @@ export const api = {
   },
 
   ai: {
-    getAnswer: (question: string, content: string): Promise<ActionResponse<{ text: string }>> =>
+    getAnswer: (question: string, content: string, userAnswer?: string): Promise<ActionResponse<{ text: string }>> =>
       handleFetch(`${base_url}/ai/answers`, {
         method: "POST",
-        body: JSON.stringify({ question, content }),
+        body: JSON.stringify({ question, content, userAnswer }),
         timeout: 60000,
       }),
   },
