@@ -1,4 +1,4 @@
-import { PaginationParams } from "./global";
+import { PaginationParams, TargetType, VoteType } from "./global";
 
 export interface LoginOAuthParams {
   provider: "github" | "google";
@@ -51,8 +51,8 @@ export interface GetAnswerParams extends PaginationParams {
 
 export interface CreateVoteParams {
   targetId: string;
-  targetType: "question" | "answer";
-  voteType: "upvotes" | "downvotes";
+  targetType: TargetType;
+  voteType: VoteType;
 }
 
 export interface UpdateVoteCountParams extends CreateVoteParams {

@@ -1,3 +1,4 @@
+import { TARGET_TYPE, VOTE_TYPE } from "@/constants/vote";
 import * as z from "zod";
 
 export const LoginSchema = z.object({
@@ -157,10 +158,10 @@ export const AiAnswerSchema = z.object({
 
 export const CreateVotesSchema = z.object({
   targetId: z.string().min(1, { message: "Target ID is required" }),
-  targetType: z.enum(["question", "answer"], { message: "Invalid Target Type" }),
-  voteType: z.enum(["upvotes", "downvotes"], { message: "Invalid vote type" }),
+  targetType: z.enum([TARGET_TYPE.ANSWER, TARGET_TYPE.QUESTION], { message: "Invalid Target Type" }),
+  voteType: z.enum([VOTE_TYPE.UPVOTE, VOTE_TYPE.DOWNVOTE], { message: "Invalid vote type" }),
 });
 
 export const UpdateVoteCountSchema = CreateVotesSchema.extend({
-  change: z.number().int().min(-1).max(1),
+  change: z.union([z.literal(1), z.literal(-1)]),
 });

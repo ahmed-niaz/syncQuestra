@@ -7,6 +7,7 @@ import { CreateVotesSchema, UpdateVoteCountSchema } from "../zod/validation";
 import handleError from "../handlers/error";
 import mongoose, { ClientSession } from "mongoose";
 import { Answer, Question, Vote } from "@/database";
+import { TARGET_TYPE, VOTE_TYPE } from "@/constants/vote";
 
 export async function UpdateVoteCount(params: UpdateVoteCountParams, session?: ClientSession): Promise<ActionResponse> {
   const validationResult = await serverAction({
@@ -19,8 +20,8 @@ export async function UpdateVoteCount(params: UpdateVoteCountParams, session?: C
   }
   const { targetId, targetType, voteType, change } = validationResult.params;
 
-  const Model = targetType === "question" ? Question : Answer;
-  const voteFieldType = voteType === "upvotes" ? "upvotes" : "downvotes";
+  const Model = targetType === TARGET_TYPE.QUESTION ? Question : Answer;
+  const voteFieldType = voteType === VOTE_TYPE.UPVOTE ? VOTE_TYPE.UPVOTE : VOTE_TYPE.DOWNVOTE;
 
   try {
     // super modular
