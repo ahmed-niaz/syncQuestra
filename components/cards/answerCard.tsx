@@ -47,6 +47,7 @@ const AnswerCard = ({ _id, author, content, createdAt, upvotes, downvotes }: Ans
             />
           </Suspense>
         </div>
+
       </div>
       <Preview content={content} />
     </article>
