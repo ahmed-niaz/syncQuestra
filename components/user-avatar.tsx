@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 interface Props {
   id: string;
   name: string;
-  imageSrc?: string;
+  imageSrc?: string | null;
   className?: string;
   fallbackClassName?: string;
 }
@@ -21,13 +21,12 @@ const UserAvatar = async ({ id, name, imageSrc, fallbackClassName, className = "
     .toUpperCase();
   return (
     <Link href={ROUTES.PROFILE(id)}>
-      <Avatar className={className}>
+      <Avatar className={cn("relative", className)}>
         {imageSrc ? (
           <Image
             src={imageSrc}
             alt={name}
-            width={36}
-            height={36}
+            fill
             quality={100}
             className="h-full w-full rounded-full object-cover"
           />

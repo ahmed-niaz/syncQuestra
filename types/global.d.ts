@@ -23,7 +23,7 @@ export interface Question {
   createdAt: Date;
 }
 
-type ActionResponse<T = null> = {
+export type ActionResponse<T = null> = {
   success: boolean;
   data?: T;
   error?: {
@@ -33,18 +33,18 @@ type ActionResponse<T = null> = {
   status?: number;
 };
 
-type SuccessResponse<T = null> = ActionResponse<T> & { success: true };
-type ErrorResponse = ActionResponse<undefined> & { success: false };
+export type SuccessResponse<T = null> = ActionResponse<T> & { success: true };
+export type ErrorResponse = ActionResponse<undefined> & { success: false };
 
-type APIErrorResponse = NextResponse<ErrorResponse>;
-type APISuccessResponse<T = null> = NextResponse<SuccessResponse<T> | ErrorResponse>;
+export type APIErrorResponse = NextResponse<ErrorResponse>;
+export type APISuccessResponse<T = null> = NextResponse<SuccessResponse<T> | ErrorResponse>;
 
-interface RouteParams {
+export interface RouteParams {
   params: Promise<Record<string, string>>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-interface PaginationParams {
+export interface PaginationParams {
   page?: number;
   pageSize?: number;
   sort?: string;
@@ -52,17 +52,16 @@ interface PaginationParams {
   query?: string;
 }
 
-interface AnswerType {
+export interface AnswerType {
   _id: string;
   author: Author;
   content: string;
   createdAt: Date;
   downvotes: number;
   upvotes: number;
-
 }
 
-interface UserType {
+export interface UserType {
   _id: string;
   name: string;
   username: string;

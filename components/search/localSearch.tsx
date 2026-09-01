@@ -52,7 +52,7 @@ const LocalSearch = ({ imgSrc, route, placeholder, additionalClassName, iconPosi
 
   return (
     <div
-      className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-4 rounded-[10px] px-4 ${additionalClassName}`}
+      className={`background-light800_darkgradient flex min-h-14 grow items-center gap-4 rounded-[10px] px-4 ${additionalClassName}`}
     >
       {iconPosition === "left" && (
         <Image src={imgSrc} alt="search icon" width={20} height={20} className="cursor-pointer" />
