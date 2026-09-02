@@ -2,7 +2,7 @@ import LocalSearch from "@/components/search/localSearch";
 import { ROUTES } from "@/constants/routes";
 import { getUsers } from "@/lib/actions/user.action";
 import { RouteParams } from "@/types/global";
-import search from "@/public/icons/search.svg"
+import search from "@/public/icons/search.svg";
 import DataRenderer from "@/components/data-renderer";
 import { EMPTY_USERS } from "@/constants/states";
 import UserCards from "@/components/cards/userCards";
@@ -14,36 +14,31 @@ const Community = async ({ searchParams }: RouteParams) => {
     page: Number(page) || 1,
     pageSize: Number(pageSize) || 10,
     filter: filter as string | undefined,
-    query: query as string | undefined
-  })
-  const { users } = data || {}
+    query: query as string | undefined,
+  });
+  const { users } = data || {};
 
-  return <div>
-    <h1 className="h1-bold text-light-800">All Users</h1>
-    <div className="mt-11">
-      <LocalSearch
-        route={ROUTES.COMMUNITY}
-        iconPosition="left"
-        imgSrc={search}
-        placeholder="Those dev are awesome"
-
+  return (
+    <div>
+      <h1 className="h1-bold text-light-800">All Users</h1>
+      <div className="mt-11">
+        <LocalSearch route={ROUTES.COMMUNITY} iconPosition="left" imgSrc={search} placeholder="Those dev are awesome" />
+      </div>
+      <DataRenderer
+        success={success}
+        error={error}
+        data={users}
+        empty={EMPTY_USERS}
+        render={(users) => (
+          <div className="mt-12 flex flex-wrap gap-5">
+            {users?.map((user) => (
+              <UserCards key={user._id} {...user} />
+            ))}
+          </div>
+        )}
       />
     </div>
-    <DataRenderer
-      success={success}
-      error={error}
-      data={users}
-      empty={EMPTY_USERS}
-      render={(user) => (
-        <div className="mt-12 flex flex-wrap gap-5">
-          {users?.map((user) => (
-            <UserCards key={user._id} {...user} />
-
-          ))}
-        </div>
-      )}
-    />
-  </div>;
+  );
 };
 
 export default Community;

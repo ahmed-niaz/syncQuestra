@@ -72,3 +72,9 @@ export interface UserType {
   portfolio?: string;
   reputation?: number;
 }
+
+export interface Collection {
+  _id: string;
+  author: Author;
+  question: Question;
+}

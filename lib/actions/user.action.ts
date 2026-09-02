@@ -1,20 +1,19 @@
-"use server"
+"use server";
 
-import { ActionResponse, ErrorResponse, PaginationParams, UserType } from "@/types/global"
-import serverAction from "../handlers/server-action"
-import { PaginationSchema } from "../zod/validation"
-import handleError from "../handlers/error"
-import { QueryFilter } from "mongoose"
-import { User } from "@/database"
+import { ActionResponse, ErrorResponse, PaginationParams, UserType } from "@/types/global";
+import serverAction from "../handlers/server-action";
+import { PaginationSchema } from "../zod/validation";
+import handleError from "../handlers/error";
+import { QueryFilter } from "mongoose";
+import { User } from "@/database";
 
-
-
-export async function getUsers(params: PaginationParams): Promise<ActionResponse<{ users: UserType[], isNext: boolean }>> {
-
+export async function getUsers(
+  params: PaginationParams
+): Promise<ActionResponse<{ users: UserType[]; isNext: boolean }>> {
   const validationResult = await serverAction({
     params,
-    schema: PaginationSchema
-  })
+    schema: PaginationSchema,
+  });
 
   if (validationResult instanceof Error) {
     return handleError(validationResult) as ErrorResponse;
@@ -25,13 +24,10 @@ export async function getUsers(params: PaginationParams): Promise<ActionResponse
   const skip = (Number(page) - 1) * pageSize;
   const limit = pageSize;
 
-  const filterQuery: QueryFilter<typeof User> = {}
+  const filterQuery: QueryFilter<typeof User> = {};
 
   if (query) {
-    filterQuery.$or = [
-      { name: { $regex: query, $options: "i" } },
-      { email: { $regex: query, $options: "i" } },
-    ]
+    filterQuery.$or = [{ name: { $regex: query, $options: "i" } }, { email: { $regex: query, $options: "i" } }];
   }
 
   let sortCriteria = {};
@@ -51,14 +47,10 @@ export async function getUsers(params: PaginationParams): Promise<ActionResponse
       break;
   }
 
-
   try {
     const totalUsers = await User.countDocuments(filterQuery);
 
-    const users = await User.find(filterQuery)
-      .sort(sortCriteria)
-      .skip(skip)
-      .limit(limit);
+    const users = await User.find(filterQuery).sort(sortCriteria).skip(skip).limit(limit);
 
     const isNext = totalUsers > skip + users.length;
 
@@ -66,4 +58,4 @@ export async function getUsers(params: PaginationParams): Promise<ActionResponse
   } catch (e) {
     return handleError(e) as ErrorResponse;
   }
-} 
+}

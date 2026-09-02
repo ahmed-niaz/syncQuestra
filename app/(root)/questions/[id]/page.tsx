@@ -19,6 +19,8 @@ import AllAnswers from "@/components/answers/answers";
 import Votes from "@/components/votes/votes";
 import { hasVoted } from "@/lib/actions/vote.action";
 import { TARGET_TYPE } from "@/constants/vote";
+import { SaveQuestions } from "@/components/questions/saveQuestions";
+import { hasSaveBookmark } from "@/lib/actions/bookmark.action";
 
 const QuestionDetails = async ({ params }: RouteParams) => {
   const { id: questionId } = await params;
@@ -49,6 +51,10 @@ const QuestionDetails = async ({ params }: RouteParams) => {
     targetType: TARGET_TYPE.QUESTION,
   });
 
+  const hasSavedBookmarkPromise = hasSaveBookmark({
+    questionId: quesitonData._id,
+  });
+
   const { content, author, createdAt, answers, views, tags, title, upvotes, downvotes, _id } = quesitonData;
   return (
     <>
@@ -66,7 +72,7 @@ const QuestionDetails = async ({ params }: RouteParams) => {
               <p className="paragraph-semibold text-dark300_light900">{author.name}</p>
             </Link>
           </div>
-          <div className="flex justify-end">
+          <div className="flex items-center justify-end gap-4">
             <Suspense fallback={<div>Loading ...</div>}>
               <Votes
                 upvotes={upvotes}
@@ -75,6 +81,10 @@ const QuestionDetails = async ({ params }: RouteParams) => {
                 targetType={TARGET_TYPE.QUESTION}
                 targetId={_id}
               />
+            </Suspense>
+
+            <Suspense fallback={<div>Loading ...</div>}>
+              <SaveQuestions questionId={_id} hasSavedBookmarkPromise={hasSavedBookmarkPromise} />
             </Suspense>
           </div>
         </div>

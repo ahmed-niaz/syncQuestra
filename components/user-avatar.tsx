@@ -23,13 +23,7 @@ const UserAvatar = async ({ id, name, imageSrc, fallbackClassName, className = "
     <Link href={ROUTES.PROFILE(id)}>
       <Avatar className={cn("relative", className)}>
         {imageSrc ? (
-          <Image
-            src={imageSrc}
-            alt={name}
-            fill
-            quality={100}
-            className="h-full w-full rounded-full object-cover"
-          />
+          <Image src={imageSrc} alt={name} fill quality={100} className="h-full w-full rounded-full object-cover" />
         ) : (
           <AvatarFallback
             className={cn("primary-gradient primary-text-gradient text-xl font-medium", fallbackClassName)}

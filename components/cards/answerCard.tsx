@@ -10,13 +10,10 @@ import { hasVoted } from "@/lib/actions/vote.action";
 import { TARGET_TYPE } from "@/constants/vote";
 
 const AnswerCard = ({ _id, author, content, createdAt, upvotes, downvotes }: AnswerType) => {
-
-
   const hasVotedPromise = hasVoted({
     targetId: _id,
     targetType: TARGET_TYPE.ANSWER,
   });
-
 
   return (
     <article className="light-border border-b py-10">
@@ -47,7 +44,6 @@ const AnswerCard = ({ _id, author, content, createdAt, upvotes, downvotes }: Ans
             />
           </Suspense>
         </div>
-
       </div>
       <Preview content={content} />
     </article>
