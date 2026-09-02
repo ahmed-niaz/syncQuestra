@@ -170,3 +170,7 @@ export const HasVotedSchema = CreateVotesSchema.pick({
   targetId: true,
   targetType: true,
 });
+
+export const BookmarkSchema = z.object({
+  questionId: z.string().min(1, { message: "Question ID is required" })
+})
