@@ -73,7 +73,7 @@ export interface UserType {
   reputation?: number;
 }
 
-export interface Collection {
+export interface CollectionType {
   _id: string;
   author: Author;
   question: Question;
