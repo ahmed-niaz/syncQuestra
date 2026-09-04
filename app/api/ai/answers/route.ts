@@ -16,14 +16,14 @@ export async function POST(req: Request) {
   const { question, content, userAnswer } = await req.json();
 
   try {
-    const validatedData = AiAnswerSchema.safeParse({ question, content });
+    const validatedData = AiAnswerSchema.safeParse({ question, content, userAnswer });
 
     if (!validatedData.success) {
       throw new ValidationError(z.flattenError(validatedData.error).fieldErrors);
     }
 
     const { text } = await generateText({
-      model: opencode("deepseek-v4-flash-free"),
+      model: opencode.chat("deepseek-v4-flash-free"),
       prompt: `Generate a markdown-formatted response to the following question: "${question}".  
       
       Consider the provided context:  

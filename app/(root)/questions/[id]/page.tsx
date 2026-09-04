@@ -22,7 +22,8 @@ import { TARGET_TYPE } from "@/constants/vote";
 import { SaveQuestions } from "@/components/questions/saveQuestions";
 import { hasSaveBookmark } from "@/lib/actions/bookmark.action";
 
-const QuestionDetails = async ({ params }: RouteParams) => {
+const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
+  const { page, pageSize, filter } = await searchParams;
   const { id: questionId } = await params;
   const { success, data: quesitonData } = await getQuestion({ questionId });
   after(async () => {
@@ -38,8 +39,9 @@ const QuestionDetails = async ({ params }: RouteParams) => {
     error: answerError,
   } = await getAnswers({
     questionId,
-    page: 1,
-    pageSize: 10,
+    page: Number(page) || 1,
+    pageSize: Number(pageSize) || 10,
+    filter: (filter as string) || "",
   });
 
   if (!answerSuccess || !answerResult) return redirect("/404");

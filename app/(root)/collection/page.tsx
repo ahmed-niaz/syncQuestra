@@ -5,6 +5,8 @@ import QuestionCard from "@/components/cards/questionCard";
 import DataRenderer from "@/components/data-renderer";
 import { EMPTY_QUESTION } from "@/constants/states";
 import { getSaveBookMark } from "@/lib/actions/bookmark.action";
+import CommonFilter from "@/components/filters/common-filter";
+import { CollectionFilters } from "@/constants/filters";
 
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string | undefined }>;
@@ -35,13 +37,14 @@ const Collection = async ({ searchParams }: SearchParams) => {
       <section className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="h1-bold text-dark100_light900">Bookmarks</h1>
       </section>
-      <section className="mt-11">
+      <section className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
         <LocalSearch
           imgSrc={search}
           route={ROUTES.COLLECTION}
           placeholder="Search Questions..."
           additionalClassName="flex-1"
         />
+        <CommonFilter filters={CollectionFilters} otherClasses="min-h-14 sm:min-w-[170px]" />
       </section>
       {/* {success ? (
         <div className="mt-10 flex w-full flex-col gap-6">

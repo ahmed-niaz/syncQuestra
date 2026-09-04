@@ -10,6 +10,7 @@ import DataRenderer from "@/components/data-renderer";
 import { EMPTY_QUESTION } from "@/constants/states";
 import CommonFilter from "@/components/filters/common-filter";
 import { HomePageFilters } from "@/constants/filters";
+import Pagination from "@/components/pagination";
 
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string | undefined }>;
@@ -39,7 +40,7 @@ const Home = async ({ searchParams }: SearchParams) => {
     <>
       <section className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="h1-bold text-dark100_light900">All Questions</h1>
-        <Button className="primary-gradient text-light-900 min-h-[46px] px-4 py-3">
+        <Button className="primary-gradient text-light-900 min-h-11.5 px-4 py-3">
           <Link href={ROUTES.ASK_QUESTION}>Ask a Questions</Link>
         </Button>
       </section>
@@ -53,7 +54,7 @@ const Home = async ({ searchParams }: SearchParams) => {
         <CommonFilter
           filters={HomePageFilters}
           otherClasses="min-h-14 sm:min-w-[170px]"
-          containerClasses="hidden max-md:flex"
+        // containerClasses="hidden max-md:flex"
         />
       </section>
       <section>
@@ -88,6 +89,7 @@ const Home = async ({ searchParams }: SearchParams) => {
           </div>
         )}
       />
+      <Pagination />
     </>
   );
 };

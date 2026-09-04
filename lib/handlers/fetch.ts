@@ -37,11 +37,19 @@ export async function handleFetch<T>(url: string, options: FetchOptions = {}): P
   try {
     const res = await fetch(url, config);
 
-    if (!res.ok) {
-      throw new RequestError(res.status, `Http error: ${res.status}`);
+    let responseData: unknown;
+    try {
+      responseData = await res.json();
+    } catch {
+      responseData = null;
     }
 
-    const responseData = await res.json();
+    if (!res.ok) {
+      const errorObj = responseData as ActionResponse<unknown> | null;
+      const errorMessage = errorObj?.error?.message || `Http error: ${res.status}`;
+      throw new RequestError(res.status, errorMessage, errorObj?.error?.details);
+    }
+
     logger.info(`Fetch request to ${url} successful`);
 
     return responseData as ActionResponse<T>;
