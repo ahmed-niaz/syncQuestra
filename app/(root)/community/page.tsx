@@ -8,17 +8,18 @@ import { EMPTY_USERS } from "@/constants/states";
 import UserCards from "@/components/cards/userCards";
 import CommonFilter from "@/components/filters/common-filter";
 import { UserFilters } from "@/constants/filters";
+import Pagination from "@/components/pagination";
 
 const Community = async ({ searchParams }: RouteParams) => {
   const { page, pageSize, filter, query } = await searchParams;
 
   const { success, data, error } = await getUsers({
     page: Number(page) || 1,
-    pageSize: Number(pageSize) || 10,
+    pageSize: Number(pageSize) || 4,
     filter: filter as string | undefined,
     query: query as string | undefined,
   });
-  const { users } = data || {};
+  const { users, isNext } = data || {};
 
   return (
     <div>
@@ -40,6 +41,7 @@ const Community = async ({ searchParams }: RouteParams) => {
           </div>
         )}
       />
+      <Pagination page={Number(page) || 1} isNext={isNext || false} containerClasses="" />
     </div>
   );
 };

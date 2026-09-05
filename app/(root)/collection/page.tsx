@@ -7,6 +7,7 @@ import { EMPTY_QUESTION } from "@/constants/states";
 import { getSaveBookMark } from "@/lib/actions/bookmark.action";
 import CommonFilter from "@/components/filters/common-filter";
 import { CollectionFilters } from "@/constants/filters";
+import Pagination from "@/components/pagination";
 
 interface SearchParams {
   searchParams: Promise<{ [key: string]: string | undefined }>;
@@ -17,12 +18,12 @@ const Collection = async ({ searchParams }: SearchParams) => {
 
   const { success, data, error } = await getSaveBookMark({
     page: Number(page) || 1,
-    pageSize: Number(pageSize) || 10,
+    pageSize: Number(pageSize) || 5,
     query: query || "",
     filter: filter || "",
   });
 
-  const { collection } = data || {};
+  const { collection, isNext } = data || {};
 
   // const filteredQuestion = questions.filter((question) => {
   //   const matchQuery = question.title.toLowerCase().includes(query.toLowerCase());
@@ -75,6 +76,7 @@ const Collection = async ({ searchParams }: SearchParams) => {
           </div>
         )}
       />
+      <Pagination page={Number(page) || 1} isNext={isNext || false} containerClasses="" />
     </>
   );
 };

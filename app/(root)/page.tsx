@@ -21,12 +21,12 @@ const Home = async ({ searchParams }: SearchParams) => {
 
   const { success, data, error } = await getQuestions({
     page: Number(page) || 1,
-    pageSize: Number(pageSize) || 10,
+    pageSize: Number(pageSize) || 5,
     query: query || "",
     filter: filter || "",
   });
 
-  const { questions } = data || {};
+  const { questions, isNext } = data || {};
 
   // const filteredQuestion = questions.filter((question) => {
   //   const matchQuery = question.title.toLowerCase().includes(query.toLowerCase());
@@ -54,7 +54,7 @@ const Home = async ({ searchParams }: SearchParams) => {
         <CommonFilter
           filters={HomePageFilters}
           otherClasses="min-h-14 sm:min-w-[170px]"
-        // containerClasses="hidden max-md:flex"
+          // containerClasses="hidden max-md:flex"
         />
       </section>
       <section>
@@ -89,7 +89,7 @@ const Home = async ({ searchParams }: SearchParams) => {
           </div>
         )}
       />
-      <Pagination />
+      <Pagination page={Number(page) || 1} isNext={isNext || false} containerClasses="" />
     </>
   );
 };

@@ -8,6 +8,7 @@ import { EMPTY_TAGS } from "@/constants/states";
 import CardTags from "@/components/cards/cardTags";
 import { TagFilters } from "@/constants/filters";
 import CommonFilter from "@/components/filters/common-filter";
+import Pagination from "@/components/pagination";
 
 const Tags = async ({ searchParams }: RouteParams) => {
   const { page, pageSize, query, filter } = await searchParams;
@@ -17,7 +18,7 @@ const Tags = async ({ searchParams }: RouteParams) => {
     query: (Array.isArray(query) ? query[0] : query) || "",
     filter: (Array.isArray(filter) ? filter[0] : filter) || "",
   });
-  const { tags } = data || {};
+  const { tags, isNext } = data || {};
 
   return (
     <>
@@ -44,6 +45,7 @@ const Tags = async ({ searchParams }: RouteParams) => {
           </div>
         )}
       />
+      <Pagination page={Number(page) || 1} isNext={!!isNext} />
     </>
   );
 };
