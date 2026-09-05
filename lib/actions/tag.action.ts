@@ -13,6 +13,7 @@ import { GetTagQuestionsSchema, PaginationSchema } from "../zod/validation";
 import handleError from "../handlers/error";
 import { Question, Tag } from "@/database";
 import { GetTagQuestionParams } from "@/types/action";
+import connectToDatabase from "../mongoose";
 
 export const getTags = async (
   params: PaginationParams
@@ -130,3 +131,18 @@ export const getTagQuestions = async (
     return handleError(e) as ErrorResponse;
   }
 };
+
+export async function getPopularTags(): Promise<ActionResponse<{ tags: TagType[] }>> {
+  try {
+    await connectToDatabase();
+
+    const tags = await Tag.find().sort({ questions: -1 }).limit(5);
+
+    return {
+      success: true,
+      data: { tags: JSON.parse(JSON.stringify(tags)) },
+    };
+  } catch (e) {
+    return handleError(e) as ErrorResponse;
+  }
+}

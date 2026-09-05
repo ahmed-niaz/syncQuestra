@@ -15,6 +15,7 @@ import { Question, Question as QuestionModel, Tag, TagQuestion } from "@/databas
 import { ActionResponse, ErrorResponse, PaginationParams, Question as QuestionType } from "@/types/global";
 import { ITagDoc } from "@/database/tag.model";
 import { IQuestionDoc } from "@/database/question.model";
+import connectToDatabase from "../mongoose";
 
 export async function createQuestion(params: CreateQuestionParams): Promise<ActionResponse<QuestionType>> {
   const validateResult = await serverAction({
@@ -302,6 +303,21 @@ export async function increaseViewCount(params: IncreaseViewCountParams): Promis
     await question.save();
 
     return { success: true, data: { views: question.views } };
+  } catch (e) {
+    return handleError(e) as ErrorResponse;
+  }
+}
+
+export async function getHotQuestions(): Promise<ActionResponse<{ questions: QuestionType[] }>> {
+  try {
+    await connectToDatabase();
+
+    const questions = await Question.find().sort({ views: -1, upvotes: -1 }).limit(5);
+
+    return {
+      success: true,
+      data: { questions: JSON.parse(JSON.stringify(questions)) },
+    };
   } catch (e) {
     return handleError(e) as ErrorResponse;
   }
