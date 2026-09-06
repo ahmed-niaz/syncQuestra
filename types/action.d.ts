@@ -73,3 +73,7 @@ export interface BookmarkParams {
 export interface GetUserParams {
   userId: string;
 }
+
+export interface GetUserQuestionsParams extends Omit<PaginationParams, "filter" | "query" | "sort"> {
+  userId: string;
+}

@@ -178,3 +178,7 @@ export const BookmarkSchema = z.object({
 export const GetUserSchema = z.object({
   userId: z.string().min(1, "User ID is required"),
 });
+
+export const GetUserQuestionsSchema = PaginationSchema.extend({
+  userId: z.string().min(1, "User ID is required"),
+});

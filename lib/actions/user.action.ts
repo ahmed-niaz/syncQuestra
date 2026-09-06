@@ -2,11 +2,12 @@
 
 import { ActionResponse, ErrorResponse, PaginationParams, UserType } from "@/types/global";
 import serverAction from "../handlers/server-action";
-import { GetUserSchema, PaginationSchema } from "../zod/validation";
+import { GetUserQuestionsSchema, GetUserSchema, PaginationSchema } from "../zod/validation";
 import handleError from "../handlers/error";
 import { QueryFilter } from "mongoose";
 import { Answer, Question, User } from "@/database";
-import { GetUserParams } from "@/types/action";
+import { Question as QuestionType } from "@/types/global";
+import { GetUserParams, GetUserQuestionsParams } from "@/types/action";
 
 export async function getUsers(
   params: PaginationParams
@@ -96,5 +97,48 @@ export async function getUser(params: GetUserParams): Promise<
     };
   } catch (e) {
     return handleError(e) as ErrorResponse;
+  }
+}
+
+export async function getUserQuestions(params: GetUserQuestionsParams): Promise<
+  ActionResponse<{
+    questions: QuestionType[];
+    isNext: boolean;
+  }>
+> {
+  const validationResult = await serverAction({
+    params,
+    schema: GetUserQuestionsSchema,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { page = 1, pageSize = 10, userId } = params;
+
+  const skip = (Number(page) - 1) * pageSize;
+  const limit = pageSize;
+
+  try {
+    const totalQuestions = await Question.countDocuments({ author: userId });
+
+    const questions = await Question.find({ author: userId })
+      .populate("tags", "name")
+      .populate("author", "name image")
+      .skip(skip)
+      .limit(limit);
+
+    const isNext = totalQuestions > skip + questions.length;
+
+    return {
+      success: true,
+      data: {
+        questions: JSON.parse(JSON.stringify(questions)),
+        isNext,
+      },
+    };
+  } catch (error) {
+    return handleError(error) as ErrorResponse;
   }
 }
