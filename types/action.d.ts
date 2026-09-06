@@ -77,3 +77,7 @@ export interface GetUserParams {
 export interface GetUserQuestionsParams extends Omit<PaginationParams, "filter" | "query" | "sort"> {
   userId: string;
 }
+
+export interface GetUserAnswersParams extends PaginationParams {
+  userId: string;
+}

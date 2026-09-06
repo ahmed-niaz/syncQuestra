@@ -1,13 +1,13 @@
 "use server";
 
-import { ActionResponse, ErrorResponse, PaginationParams, UserType } from "@/types/global";
+import { ActionResponse, AnswerType, ErrorResponse, PaginationParams, UserType } from "@/types/global";
 import serverAction from "../handlers/server-action";
-import { GetUserQuestionsSchema, GetUserSchema, PaginationSchema } from "../zod/validation";
+import { GetUserAnswersSchema, GetUserQuestionsSchema, GetUserSchema, PaginationSchema } from "../zod/validation";
 import handleError from "../handlers/error";
 import { QueryFilter } from "mongoose";
 import { Answer, Question, User } from "@/database";
 import { Question as QuestionType } from "@/types/global";
-import { GetUserParams, GetUserQuestionsParams } from "@/types/action";
+import { GetUserAnswersParams, GetUserParams, GetUserQuestionsParams } from "@/types/action";
 
 export async function getUsers(
   params: PaginationParams
@@ -135,6 +135,45 @@ export async function getUserQuestions(params: GetUserQuestionsParams): Promise<
       success: true,
       data: {
         questions: JSON.parse(JSON.stringify(questions)),
+        isNext,
+      },
+    };
+  } catch (error) {
+    return handleError(error) as ErrorResponse;
+  }
+}
+
+export async function getUserAnswers(params: GetUserAnswersParams): Promise<
+  ActionResponse<{
+    answers: AnswerType[];
+    isNext: boolean;
+  }>
+> {
+  const validationResult = await serverAction({
+    params,
+    schema: GetUserAnswersSchema,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { page = 1, pageSize = 10, userId } = params;
+
+  const skip = (Number(page) - 1) * pageSize;
+  const limit = pageSize;
+
+  try {
+    const totalAnswers = await Answer.countDocuments({ author: userId });
+
+    const answers = await Answer.find({ author: userId }).populate("author", "_id name image").skip(skip).limit(limit);
+
+    const isNext = totalAnswers > skip + answers.length;
+
+    return {
+      success: true,
+      data: {
+        answers: JSON.parse(JSON.stringify(answers)),
         isNext,
       },
     };

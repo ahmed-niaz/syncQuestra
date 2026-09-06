@@ -59,6 +59,7 @@ export interface AnswerType {
   createdAt: Date;
   downvotes: number;
   upvotes: number;
+  question: string;
 }
 
 export interface UserType {
