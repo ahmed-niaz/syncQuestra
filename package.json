@@ -22,6 +22,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cm6-theme-material-dark": "^0.2.0",
+    "cn": "^0.2.5",
+    "dayjs": "^1.11.23",
     "eslint-plugin-tailwindcss": "^3.18.3",
     "lucide-react": "^1.14.0",
     "mongodb": "^7.3.0",

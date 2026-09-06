@@ -9,12 +9,20 @@ import { getPopularTags } from "@/lib/actions/tag.action";
 import CardTags from "../cards/cardTags";
 
 const RightSideNavigation = async () => {
-  const { success: isHotQuestionsSuccess, data: hotQuestionsData, error: hotQuestionsError } = await getHotQuestions();
-  const { success: isPopularTagsSuccess, data: popularTagsData, error: popularTagsError } = await getPopularTags();
+  // const { success: isHotQuestionsSuccess, data: hotQuestionsData, error: hotQuestionsError } = await getHotQuestions();
+  // const { success: isPopularTagsSuccess, data: popularTagsData, error: popularTagsError } = await getPopularTags();
+
+  // const { questions } = hotQuestionsData || {};
+  // const { tags } = popularTagsData || {};
+
+  // optimization
+  const [
+    { success: isHotQuestionsSuccess, data: hotQuestionsData, error: hotQuestionsError },
+    { success: isPopularTagsSuccess, data: popularTagsData, error: popularTagsError },
+  ] = await Promise.all([getHotQuestions(), getPopularTags()]);
 
   const { questions } = hotQuestionsData || {};
   const { tags } = popularTagsData || {};
-
   return (
     <section className="custom-scrollbar background-light900_dark200 light-border shadow-light-300 sticky top-0 right-0 flex h-screen w-87.5 flex-col gap-6 overflow-y-auto border-l p-6 pt-36 max-xl:hidden dark:shadow-none">
       <div>

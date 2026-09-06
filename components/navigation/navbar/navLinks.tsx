@@ -12,16 +12,21 @@ const NavigationLinks = ({ isMobileNav = false, userId }: { isMobileNav?: boolea
   return (
     <>
       {SideBarLink.map((item) => {
-        const isActive = (pathname.includes(item.route) && item.route.length > 1) || pathname === item.route;
+        let route = item.route;
 
         if (item.route === "/profile") {
-          if (userId) item.route = `${item.route}/${userId}`;
-          else return null;
+          if (userId) {
+            route = `${item.route}/${userId}`;
+          } else {
+            return null;
+          }
         }
+
+        const isActive = (pathname.includes(route) && route.length > 1) || pathname === route;
 
         const LinkComponent = (
           <Link
-            href={item.route}
+            href={route}
             key={item.label}
             className={cn(
               isActive ? "primary-gradient rounded-lg" : "text-dark300_light900",
@@ -34,11 +39,9 @@ const NavigationLinks = ({ isMobileNav = false, userId }: { isMobileNav?: boolea
         );
 
         return isMobileNav ? (
-          <SheetClose render={LinkComponent} key={item.route} nativeButton={false}>
-            {LinkComponent}
-          </SheetClose>
+          <SheetClose render={LinkComponent} key={route} nativeButton={false} />
         ) : (
-          <React.Fragment key={item.route}>{LinkComponent}</React.Fragment>
+          <React.Fragment key={route}>{LinkComponent}</React.Fragment>
         );
       })}
     </>

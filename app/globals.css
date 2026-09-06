@@ -177,7 +177,7 @@
 }
 
 @utility h1-bold {
-  @apply text-[30px] font-bold leading-[42px] tracking-tighter;
+  @apply text-[30px] font-bold leading-10.5 tracking-tighter;
 }
 
 @utility h2-bold {
@@ -189,7 +189,7 @@
 }
 
 @utility h3-bold {
-  @apply text-[20px] font-bold leading-[26px];
+  @apply text-[20px] font-bold leading-6.5;
 }
 
 @utility h3-semibold {
@@ -249,11 +249,11 @@
 }
 
 @utility subtle-medium {
-  @apply text-[10px]! font-medium! leading-[13px]!;
+  @apply text-[10px]! font-medium! leading-3.25!;
 }
 
 @utility subtle-regular {
-  @apply text-[10px] font-normal leading-[13px];
+  @apply text-[10px] font-normal leading-3.25;
 }
 
 @utility placeholder {
@@ -311,7 +311,7 @@
 }
 
 .dark .primary-text-gradient {
-  background:  linear-gradient(135deg, #168aad 0%, #f8f8f8 100%);
+  background: linear-gradient(135deg, #168aad 0%, #f8f8f8 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -358,7 +358,7 @@
 }
 
 @utility tab {
-  @apply min-h-full! dark:bg-dark-400! bg-light-800! text-light-500! dark:data-[state=active]:bg-dark-300! data-[state=active]:bg-primary-100! data-[state=active]:text-primary-500!;
+  @apply min-h-full! bg-light-800! text-light-500! dark:bg-dark-400! dark:text-light-500! data-active:bg-light-900! data-active:text-dark-300! dark:data-active:bg-dark-300! dark:data-active:text-light-900! data-[state=active]:bg-light-900! data-[state=active]:text-dark-300! dark:data-[state=active]:bg-dark-300! dark:data-[state=active]:text-light-900!;
 }
 
 @layer base {

@@ -2,10 +2,11 @@
 
 import { ActionResponse, ErrorResponse, PaginationParams, UserType } from "@/types/global";
 import serverAction from "../handlers/server-action";
-import { PaginationSchema } from "../zod/validation";
+import { GetUserSchema, PaginationSchema } from "../zod/validation";
 import handleError from "../handlers/error";
 import { QueryFilter } from "mongoose";
-import { User } from "@/database";
+import { Answer, Question, User } from "@/database";
+import { GetUserParams } from "@/types/action";
 
 export async function getUsers(
   params: PaginationParams
@@ -55,6 +56,44 @@ export async function getUsers(
     const isNext = totalUsers > skip + users.length;
 
     return { success: true, data: { users: JSON.parse(JSON.stringify(users)), isNext } };
+  } catch (e) {
+    return handleError(e) as ErrorResponse;
+  }
+}
+
+export async function getUser(params: GetUserParams): Promise<
+  ActionResponse<{
+    user: UserType;
+    totalQuestions: number;
+    totalAnswers: number;
+  }>
+> {
+  const validationResult = await serverAction({
+    params,
+    schema: GetUserSchema,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+  const { userId } = validationResult.params;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new Error("user not found");
+    }
+    const totalQuestions = await Question.countDocuments({ author: userId });
+    const totalAnswers = await Answer.countDocuments({ author: userId });
+
+    return {
+      success: true,
+      data: {
+        user: JSON.parse(JSON.stringify(user)),
+        totalQuestions,
+        totalAnswers,
+      },
+    };
   } catch (e) {
     return handleError(e) as ErrorResponse;
   }

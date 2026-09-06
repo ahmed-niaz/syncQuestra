@@ -15,7 +15,7 @@ const LeftSideNavigation = async () => {
   const userId = session?.user?.id;
 
   return (
-    <section className="custom-scrollbar background-light900_dark200 light-border shadow-light-300 sticky top-0 left-0 flex h-screen flex-col justify-between overflow-y-auto border-r p-6 pt-36 max-sm:hidden lg:w-[290px] dark:shadow-none">
+    <section className="custom-scrollbar background-light900_dark200 light-border shadow-light-300 sticky top-0 left-0 flex h-screen flex-col justify-between overflow-y-auto border-r p-6 pt-36 max-sm:hidden lg:w-72.5 dark:shadow-none">
       <div className="flex flex-1 flex-col gap-6">
         <NavigationLinks userId={userId} />
       </div>
@@ -37,19 +37,21 @@ const LeftSideNavigation = async () => {
           </form>
         ) : (
           <>
-            <Button className="base-bold text-dark-400_light700 rounded-2 mt-4 h-12 w-full cursor-pointer px-4 py-3 font-bold">
-              <Link href={ROUTES.LOGIN}>
-                <Image className="invert lg:hidden" src={login} width={20} height={20} alt="login" />
-                <span className="max-lg:hidden">Login</span>
-              </Link>
-            </Button>
+            <Link
+              href={ROUTES.LOGIN}
+              className="base-bold text-dark-400_light700 rounded-2 mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 border px-4 py-3 font-bold"
+            >
+              <Image className="invert lg:hidden" src={login} width={20} height={20} alt="login" />
+              <span className="max-lg:hidden">Login</span>
+            </Link>
 
-            <Button className="primary-gradient paragraph-semibold text-dark-400_light700 rounded-2 mt-4 h-12 w-full cursor-pointer px-4 py-3">
-              <Link href={ROUTES.REGISTER}>
-                <Image className="invert lg:hidden" src={register} width={20} height={20} alt="register" />
-                <span className="max-lg:hidden">Register</span>
-              </Link>
-            </Button>
+            <Link
+              href={ROUTES.REGISTER}
+              className="primary-gradient paragraph-semibold text-dark-400_light700 rounded-2 mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 px-4 py-3"
+            >
+              <Image className="invert lg:hidden" src={register} width={20} height={20} alt="register" />
+              <span className="max-lg:hidden">Register</span>
+            </Link>
           </>
         )}
       </div>

@@ -71,10 +71,17 @@ export interface UserType {
   location?: string;
   portfolio?: string;
   reputation?: number;
+  createdAt: Date;
 }
 
 export interface CollectionType {
   _id: string;
   author: Author;
   question: Question;
+}
+
+export interface BadgeCountsType {
+  GOLD: string;
+  SILVER: string;
+  BRONZE: string;
 }

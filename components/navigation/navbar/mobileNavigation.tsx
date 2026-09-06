@@ -33,41 +33,55 @@ const MobileNavigation = async () => {
           <Image src={lightLogo} width={80} height={80} alt="syncQuestra" className="hidden dark:block" />
         </Link>
         <div className="no-scrollbar flex h-[calc(100vh-80px)] flex-col justify-between overflow-y-auto px-4">
-          <SheetClose render={<section className="flex h-full cursor-pointer flex-col gap-4" />} nativeButton={false}>
-            <NavigationLinks isMobileNav />
-          </SheetClose>
+          <section className="flex h-full cursor-pointer flex-col gap-4">
+            <NavigationLinks isMobileNav userId={userId} />
+          </section>
 
           <div className="flex flex-col gap-3">
             {userId ? (
-              <SheetClose>
-                <form
-                  action={async () => {
-                    "use server";
-                    await signOut();
-                  }}
-                >
-                  <Button
-                    type="submit"
-                    className="primary-gradient paragraph-semibold text-dark-400_light700 rounded-2 mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 px-4 py-3"
-                  >
-                    <LogOut className="size-4 text-black dark:text-white" />
-                    <span>Logout</span>
-                  </Button>
-                </form>
-              </SheetClose>
+              <form
+                action={async () => {
+                  "use server";
+                  await signOut();
+                }}
+              >
+                <SheetClose
+                  render={
+                    <Button
+                      type="submit"
+                      className="primary-gradient paragraph-semibold text-dark-400_light700 rounded-2 mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 px-4 py-3"
+                    >
+                      <LogOut className="size-4 text-black dark:text-white" />
+                      <span>Logout</span>
+                    </Button>
+                  }
+                />
+              </form>
             ) : (
               <>
-                <SheetClose render={<Link href={ROUTES.LOGIN} />} nativeButton={false}>
-                  <Button className="base-bold text-dark-400_light700 rounded-2 mt-4 h-12 w-full cursor-pointer px-4 py-3 font-bold text-black">
-                    Login
-                  </Button>
-                </SheetClose>
+                <SheetClose
+                  nativeButton={false}
+                  render={
+                    <Link
+                      href={ROUTES.LOGIN}
+                      className="base-bold text-dark-400_light700 rounded-2 mt-4 flex h-12 w-full cursor-pointer items-center justify-center border px-4 py-3 font-bold text-black"
+                    >
+                      Login
+                    </Link>
+                  }
+                />
 
-                <SheetClose render={<Link href={ROUTES.REGISTER} />} nativeButton={false}>
-                  <Button className="primary-gradient text-dark-400_light700 rounded-2 base-bold mt-4 h-12 w-full cursor-pointer px-4 py-3">
-                    Register
-                  </Button>
-                </SheetClose>
+                <SheetClose
+                  nativeButton={false}
+                  render={
+                    <Link
+                      href={ROUTES.REGISTER}
+                      className="primary-gradient paragraph-semibold text-dark-400_light700 rounded-2 mt-4 flex h-12 w-full cursor-pointer items-center justify-center px-4 py-3"
+                    >
+                      Register
+                    </Link>
+                  }
+                />
               </>
             )}
           </div>

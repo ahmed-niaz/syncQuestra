@@ -69,3 +69,7 @@ export interface HasVotedResponse {
 export interface BookmarkParams {
   questionId: string;
 }
+
+export interface GetUserParams {
+  userId: string;
+}
