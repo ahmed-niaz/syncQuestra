@@ -186,3 +186,11 @@ export const GetUserQuestionsSchema = PaginationSchema.extend({
 export const GetUserAnswersSchema = PaginationSchema.extend({
   userId: z.string().min(1, "User ID is required"),
 });
+
+export const GetUserTagsSchema = PaginationSchema.extend({
+  userId: z.string().min(1, "User ID is required"),
+});
+
+export const DeleteQuestionSchema = z.object({
+  questionId: z.string().min(1, "question id is required"),
+});

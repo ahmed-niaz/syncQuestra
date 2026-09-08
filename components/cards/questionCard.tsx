@@ -8,17 +8,19 @@ import Metric from "../metric";
 import like from "@/public/icons/likes.svg";
 import comments from "@/public/icons/comments.svg";
 import viewsImg from "@/public/icons/view.svg";
+import EditDeleteAction from "../user/editDeleteAction";
 
 interface Props {
   question: Question;
+  showActionBtns?: boolean;
 }
 
-const QuestionCard = ({ question }: Props) => {
+const QuestionCard = ({ question, showActionBtns = false }: Props) => {
   const { _id, title, createdAt, tags, author, upvotes, answers, views } = question;
   return (
     <div className="card-wrapper rounded-[10px] border-gray-300 p-9 sm:px-11">
-      <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
-        <div>
+      <div className="flex flex-col-reverse items-center justify-between gap-5 sm:flex-row">
+        <div className="flex-1">
           <span className="subtle-regular text-dark400_light700 line-clamp-1 flex sm:hidden">
             {getTimeStamp(createdAt)}
           </span>
@@ -26,6 +28,7 @@ const QuestionCard = ({ question }: Props) => {
             <h3 className="sm:h3-semibold base-semibold text-dark200_light900 line-clamp-1 flex">{title}</h3>
           </Link>
         </div>
+        {showActionBtns && <EditDeleteAction type="Question" itemId={_id} />}
       </div>
       <div className="mt-3.5 flex w-full flex-wrap gap-2">
         {tags.map((tag: Tags) => (

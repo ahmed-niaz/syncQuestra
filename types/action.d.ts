@@ -81,3 +81,11 @@ export interface GetUserQuestionsParams extends Omit<PaginationParams, "filter" 
 export interface GetUserAnswersParams extends PaginationParams {
   userId: string;
 }
+
+export interface GetUserTagsParams {
+  userId: string;
+}
+
+export interface DeleteQuestionParams {
+  questionId: string;
+}

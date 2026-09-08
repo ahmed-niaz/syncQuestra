@@ -1,9 +1,16 @@
 "use server";
 
-import { CreateQuestionParams, EditQuestionParams, GetQuestionParams, IncreaseViewCountParams } from "@/types/action";
+import {
+  CreateQuestionParams,
+  DeleteQuestionParams,
+  EditQuestionParams,
+  GetQuestionParams,
+  IncreaseViewCountParams,
+} from "@/types/action";
 import serverAction from "../handlers/server-action";
 import {
   AskQuestionSchema,
+  DeleteQuestionSchema,
   EditQuestionSchema,
   GetQuestionSchema,
   IncreaseViewCountSchema,
@@ -11,11 +18,12 @@ import {
 } from "../zod/validation";
 import handleError from "../handlers/error";
 import mongoose, { QueryFilter } from "mongoose";
-import { Question, Question as QuestionModel, Tag, TagQuestion } from "@/database";
+import { Collection, Question as QuestionModel, Tag, TagQuestion, Vote, Answer } from "@/database";
 import { ActionResponse, ErrorResponse, PaginationParams, Question as QuestionType } from "@/types/global";
 import { ITagDoc } from "@/database/tag.model";
-import { IQuestionDoc } from "@/database/question.model";
+import Question, { IQuestionDoc } from "@/database/question.model";
 import connectToDatabase from "../mongoose";
+import { revalidatePath } from "next/cache";
 
 export async function createQuestion(params: CreateQuestionParams): Promise<ActionResponse<QuestionType>> {
   const validateResult = await serverAction({
@@ -292,7 +300,7 @@ export async function increaseViewCount(params: IncreaseViewCountParams): Promis
   const { questionId } = validateResult.params;
 
   try {
-    const question = await Question.findById(questionId);
+    const question = await QuestionModel.findById(questionId);
 
     if (!question) {
       throw new Error("Question not found");
@@ -312,7 +320,7 @@ export async function getHotQuestions(): Promise<ActionResponse<{ questions: Que
   try {
     await connectToDatabase();
 
-    const questions = await Question.find().sort({ views: -1, upvotes: -1 }).limit(5);
+    const questions = await QuestionModel.find().sort({ views: -1, upvotes: -1 }).limit(5);
 
     return {
       success: true,
@@ -320,5 +328,74 @@ export async function getHotQuestions(): Promise<ActionResponse<{ questions: Que
     };
   } catch (e) {
     return handleError(e) as ErrorResponse;
+  }
+}
+
+export async function deleteQuestion(params: DeleteQuestionParams): Promise<ActionResponse> {
+  const validationResult = await serverAction({
+    params,
+    schema: DeleteQuestionSchema,
+    authorize: true,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { questionId } = validationResult.params;
+
+  const userId = validationResult?.session?.user?.id;
+
+  const session = await mongoose.startSession();
+
+  try {
+    session.startTransaction();
+    const question = await QuestionModel.findById(questionId).session(session);
+    if (!question) {
+      throw new Error("Question not found");
+    }
+    if (question.author.toString() !== userId) {
+      throw new Error("You are not authorize to delete this question");
+    }
+    // Delete related entires inside the tnxd.
+    await Collection.deleteMany({ question: questionId }).session(session);
+    await TagQuestion.deleteMany({ question: questionId }).session(session);
+
+    // find all the tag and reduce the count
+    if (question.tags.length > 0) {
+      await Tag.updateMany({ _id: { $in: question.tags } }, { $inc: { questions: -1 } }, { session });
+    }
+
+    const answers = await Answer.find({ question: questionId }).session(session);
+
+    // remove all the votes of the answers
+    await Vote.deleteMany({
+      actionId: { $in: answers.map((answer) => answer._id) },
+      actionType: "answer",
+    }).session(session);
+
+    // remove all the votes of the question
+    await Vote.deleteMany({
+      actionId: questionId,
+      actionType: "question",
+    }).session(session);
+
+    // delete answers
+    await Answer.deleteMany({ question: questionId }).session(session);
+
+    await QuestionModel.findByIdAndDelete(questionId).session(session);
+
+    await session.commitTransaction();
+    session.endSession();
+
+    revalidatePath(`/profile/${userId}`);
+    return {
+      success: true,
+    };
+  } catch (e) {
+    await session.abortTransaction();
+    return handleError(e) as ErrorResponse;
+  } finally {
+    session.endSession();
   }
 }
