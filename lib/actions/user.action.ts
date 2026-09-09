@@ -1,6 +1,6 @@
 "use server";
 
-import { ActionResponse, AnswerType, ErrorResponse, PaginationParams, UserType } from "@/types/global";
+import { ActionResponse, AnswerType, Badges, ErrorResponse, PaginationParams, UserType } from "@/types/global";
 import serverAction from "../handlers/server-action";
 import {
   GetUserAnswersSchema,
@@ -8,12 +8,20 @@ import {
   GetUserSchema,
   GetUserTagsSchema,
   PaginationSchema,
+  UpdateUserSchema,
 } from "../zod/validation";
 import handleError from "../handlers/error";
 import { PipelineStage, QueryFilter, Types } from "mongoose";
 import { Answer, Question, User } from "@/database";
 import { Question as QuestionType } from "@/types/global";
-import { GetUserAnswersParams, GetUserParams, GetUserQuestionsParams, GetUserTagsParams } from "@/types/action";
+import {
+  GetUserAnswersParams,
+  GetUserParams,
+  GetUserQuestionsParams,
+  GetUserTagsParams,
+  UpdateUserParams,
+} from "@/types/action";
+import { assignBadges } from "../utils";
 
 export async function getUsers(
   params: PaginationParams
@@ -229,6 +237,104 @@ export async function getUserTopTags(
     return {
       success: true,
       data: { tags: JSON.parse(JSON.stringify(tags)) },
+    };
+  } catch (error) {
+    return handleError(error) as ErrorResponse;
+  }
+}
+
+export async function getUserStats(params: GetUserParams): Promise<
+  ActionResponse<{
+    totalQuestions: number;
+    totalAnswers: number;
+    badges: Badges;
+  }>
+> {
+  const validationResult = await serverAction({
+    params,
+    schema: GetUserSchema,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { userId } = params;
+
+  try {
+    const [questionStats] = await Question.aggregate([
+      { $match: { author: new Types.ObjectId(userId) } },
+      {
+        $group: {
+          _id: null,
+          count: { $sum: 1 },
+          upvotes: { $sum: "$upvotes" },
+          views: { $sum: "$views" },
+        },
+      },
+    ]);
+
+    const [answerStats] = await Answer.aggregate([
+      { $match: { author: new Types.ObjectId(userId) } },
+      {
+        $group: {
+          _id: null,
+          count: { $sum: 1 },
+          upvotes: { $sum: "$upvotes" },
+        },
+      },
+    ]);
+
+    const totalQuestions = questionStats?.count || 0;
+    const totalAnswers = answerStats?.count || 0;
+    const questionUpvotes = questionStats?.upvotes || 0;
+    const answerUpvotes = answerStats?.upvotes || 0;
+    const questionViews = questionStats?.views || 0;
+
+    const badges = assignBadges({
+      criteria: [
+        { type: "QUESTION_COUNT", count: totalQuestions },
+        { type: "ANSWER_COUNT", count: totalAnswers },
+        { type: "QUESTION_UPVOTES", count: questionUpvotes },
+        { type: "ANSWER_UPVOTES", count: answerUpvotes },
+        { type: "TOTAL_VIEWS", count: questionViews },
+      ],
+    });
+
+    return {
+      success: true,
+      data: {
+        totalQuestions,
+        totalAnswers,
+        badges,
+      },
+    };
+  } catch (error) {
+    return handleError(error) as ErrorResponse;
+  }
+}
+
+export async function updateUser(params: UpdateUserParams): Promise<ActionResponse<{ user: UserType }>> {
+  const validationResult = await serverAction({
+    params,
+    schema: UpdateUserSchema,
+    authorize: true,
+  });
+
+  if (validationResult instanceof Error) {
+    return handleError(validationResult) as ErrorResponse;
+  }
+
+  const { user } = validationResult.session!;
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(user?.id, params, {
+      new: true,
+    });
+
+    return {
+      success: true,
+      data: { user: JSON.parse(JSON.stringify(updatedUser)) },
     };
   } catch (error) {
     return handleError(error) as ErrorResponse;

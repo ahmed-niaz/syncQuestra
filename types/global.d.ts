@@ -86,3 +86,9 @@ export interface BadgeCountsType {
   SILVER: string;
   BRONZE: string;
 }
+
+export interface Badges {
+  GOLD: number;
+  SILVER: number;
+  BRONZE: number;
+}

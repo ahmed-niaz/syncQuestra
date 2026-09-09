@@ -89,3 +89,25 @@ export interface GetUserTagsParams {
 export interface DeleteQuestionParams {
   questionId: string;
 }
+
+export interface CreateInteractionParams {
+  action: "view" | "upvote" | "downvote" | "bookmark" | "post" | "edit" | "delete" | "search";
+  actionId: string;
+  authorId: string;
+  actionTarget: "question" | "answer";
+}
+
+export interface UpdateReputationParams {
+  interaction: IInteractionDoc;
+  session: mongoose.ClientSession;
+  performerId: string;
+  authorId: string;
+}
+
+interface UpdateUserParams {
+  name?: string;
+  username?: string;
+  email?: string;
+  image?: string;
+  password?: string;
+}
