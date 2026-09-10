@@ -111,3 +111,10 @@ interface UpdateUserParams {
   image?: string;
   password?: string;
 }
+
+export interface RecommendationParams {
+  userId: string;
+  query?: string;
+  skip: number;
+  limit: number;
+}

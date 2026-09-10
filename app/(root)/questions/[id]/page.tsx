@@ -21,6 +21,30 @@ import { hasVoted } from "@/lib/actions/vote.action";
 import { TARGET_TYPE } from "@/constants/vote";
 import { SaveQuestions } from "@/components/questions/saveQuestions";
 import { hasSaveBookmark } from "@/lib/actions/bookmark.action";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: RouteParams): Promise<Metadata> {
+  // read route params
+  const { id: questionId } = await params;
+
+  const { success, data: quesitonData } = await getQuestion({ questionId });
+
+  if (!success || !quesitonData)
+    return {
+      title: "Question not found",
+      description: "This question does not exist",
+    };
+
+  return {
+    title: quesitonData.title,
+    description: quesitonData.content.slice(0, 99),
+    twitter: {
+      card: "summary_large_image",
+      title: quesitonData.title,
+      description: quesitonData.content.slice(0, 99),
+    },
+  };
+}
 
 const QuestionDetails = async ({ params, searchParams }: RouteParams) => {
   const { page, pageSize, filter } = await searchParams;
